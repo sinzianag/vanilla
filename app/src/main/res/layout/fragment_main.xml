@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/computer_puns"
+        android:id="@+id/computer"
+        android:layout_marginTop="112dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/food_puns"
+        android:id="@+id/food"
+        android:layout_below="@+id/computer"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/space_puns"
+        android:id="@+id/space"
+        android:layout_below="@+id/food"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/elevator_puns"
+        android:id="@+id/elevator"
+        android:layout_below="@+id/space"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/battery_puns"
+        android:id="@+id/battery"
+        android:layout_below="@+id/elevator"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/animal_puns"
+        android:id="@+id/animal"
+        android:layout_below="@+id/battery"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

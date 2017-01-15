@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Vanilla</string>
+
+    <string name="computer_puns">Computer Puns</string>
+
+    <string name="food_puns">Food Puns</string>
+
+    <string name="space_puns">Space Puns</string>
+
+    <string name="elevator_puns">Elevator Puns</string>
+
+    <string name="battery_puns">Battery Puns</string>
+
+    <string name="animal_puns">Animal Puns</string>
 </resources>
