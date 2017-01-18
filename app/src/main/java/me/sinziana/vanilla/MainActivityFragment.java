@@ -3,6 +3,7 @@ package me.sinziana.vanilla;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,6 +86,7 @@ public class MainActivityFragment extends Fragment {
     }
 
     private void goToFragment(Fragment newFragment) {
+
             System.out.println("Button Pressed");
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
             transaction.replace(R.id.fragment_container, newFragment);

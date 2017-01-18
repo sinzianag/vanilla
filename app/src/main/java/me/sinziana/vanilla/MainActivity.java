@@ -1,6 +1,8 @@
 package me.sinziana.vanilla;
 
 import android.app.FragmentManager;
+import android.app.SearchManager;
+import android.content.Context;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +12,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
+
+
+    private SearchView _searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,11 +58,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.search, menu);
 
-        MenuItem searchItem = menu.findItem(R.id.action_search);
-        SearchView searchView =
-                (SearchView) MenuItemCompat.getActionView(searchItem);
-
-        // TODO Configure the search info and add any event listeners...
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        _searchView = (SearchView) menu.findItem(R.id.search).getActionView();
+        _searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 
         return super.onCreateOptionsMenu(menu);
     }

@@ -2,6 +2,7 @@ package me.sinziana.vanilla.puns;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +29,9 @@ public class AnimalPuns extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(R.string.animal_puns);
+        ActionBar ab = ((AppCompatActivity)getActivity()).getSupportActionBar();
+        ab.setTitle(R.string.animal_puns);
+        ab.invalidateOptionsMenu();
         _punIterator = PunReader.readPuns(FILE_NAME, getActivity()).iterator();
     }
 
