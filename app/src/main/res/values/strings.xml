@@ -12,4 +12,8 @@
     <string name="battery_puns">Battery Puns</string>
 
     <string name="animal_puns">Animal Puns</string>
+
+    <string name="search">Search</string>
+
+    <string name="settings">Settings</string>
 </resources>
