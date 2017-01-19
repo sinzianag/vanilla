@@ -1,0 +1,16 @@
+from com.android.monkeyrunner import MonkeyRunner, MonkeyDevice
+
+device = MonkeyRunner.waitForConnection()
+device.installPackage('../app/build/outputs/apk/app-debug.apk')
+
+package = 'me.sinziana.vanilla'
+activity = 'me.sinziana.vanilla.MainActivity'
+
+runComponent = package + '/' + activity
+device.startActivity(component=runComponent)
+
+device.press('KEYCODE_MENU', MonkeyDevice.DOWN_AND_UP)
+
+result = device.takeSnapshot()
+
+result.writeToFile('shot1.png','png')
