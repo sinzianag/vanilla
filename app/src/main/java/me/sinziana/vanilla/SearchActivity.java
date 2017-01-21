@@ -57,13 +57,11 @@ public class SearchActivity extends AppCompatActivity {
             // this is for the emulator ( Change to 127.0.0.1 )
             String url ="http://10.0.2.2:8080/" + query;
 
-            // Request a string response from the provided URL.
             StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            // Display the first 500 characters of the response string.
-                            _textView.setText(response.substring(0,700));
+                            _textView.setText(response);
                         }
                     }, new Response.ErrorListener() {
                 @Override
@@ -71,7 +69,6 @@ public class SearchActivity extends AppCompatActivity {
                     _textView.setText("That didn't work! " + error.getMessage());
                 }
             });
-            // Add the request to the RequestQueue.
             queue.add(stringRequest);
         }
     }
