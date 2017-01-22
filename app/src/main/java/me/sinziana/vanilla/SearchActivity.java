@@ -45,8 +45,6 @@ public class SearchActivity extends AppCompatActivity {
     private void handleIntent(Intent intent) {
         System.out.println("%% handleIntent");
 
-
-
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
             System.out.println("%% query" + query);
