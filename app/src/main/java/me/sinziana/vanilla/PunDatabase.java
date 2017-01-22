@@ -39,7 +39,7 @@ public class PunDatabase {
     }
 
     public Cursor getWordMatches(String query, String[] columns) {
-        String selection = KEYWORDS + " MATCH ?";
+        String selection = FTS_VIRTUAL_TABLE + " MATCH ?";
         String[] selectionArgs = new String[] {query+"*"};
 
         return query(selection, selectionArgs, columns);
@@ -102,7 +102,6 @@ public class PunDatabase {
         }
 
         private void loadDatabase() {
-            HashSet<String> puns = new HashSet<>();
             BufferedReader reader = null;
             try {
                 reader = new BufferedReader(new InputStreamReader(_context.getAssets().open(AnimalPuns.FILE_NAME)));

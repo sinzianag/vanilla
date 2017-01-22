@@ -2,6 +2,7 @@ package me.sinziana.vanilla;
 
 import android.app.SearchManager;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -27,10 +28,9 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.search_activity);
 
         _toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        _textView = (TextView) findViewById(R.id.textView);
         setSupportActionBar(_toolbar);
         System.out.println("%% onCreate");
-        handleIntent(getIntent());
-        _textView = (TextView) findViewById(R.id.textView);
     }
 
     @Override
@@ -51,23 +51,35 @@ public class SearchActivity extends AppCompatActivity {
             getSupportActionBar().setTitle("Searching for..." + query);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-            RequestQueue queue = Volley.newRequestQueue(this);
-            // this is for the emulator ( Change to 127.0.0.1 )
-            String url ="http://10.0.2.2:8080/" + query;
+//            RequestQueue queue = Volley.newRequestQueue(this);
+//            // this is for the emulator ( Change to 127.0.0.1 )
+//            String url ="http://10.0.2.2:8080/" + query;
+//
+//            StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+//                    new Response.Listener<String>() {
+//                        @Override
+//                        public void onResponse(String response) {
+//                            _textView.setText(response);
+//                        }
+//                    }, new Response.ErrorListener() {
+//                @Override
+//                public void onErrorResponse(VolleyError error) {
+//                    _textView.setText("That didn't work! " + error.getMessage());
+//                }
+//            });
+//            queue.add(stringRequest);
 
-            StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            _textView.setText(response);
-                        }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    _textView.setText("That didn't work! " + error.getMessage());
+            PunDatabase database = new PunDatabase(this);
+            Cursor cur = database.getWordMatches(query, null);
+
+            if (cur != null) {
+                cur.moveToFirst();
+                while (cur.isAfterLast() == false) {
+                    _textView.append("\n" + cur.getString(1));
+                    cur.moveToNext();
                 }
-            });
-            queue.add(stringRequest);
+            }
+
         }
     }
 
