@@ -8,10 +8,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashSet;
 
-/**
- * Created by sinziana on 1/15/17.
- */
-
 public class PunReader {
 
     public PunReader() {

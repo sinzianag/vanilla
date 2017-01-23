@@ -2,9 +2,7 @@ package me.sinziana.vanilla;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.res.Resources;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteAbortException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
@@ -12,15 +10,14 @@ import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.HashSet;
 
 import me.sinziana.vanilla.puns.AnimalPuns;
-
-/**
- * sinziana on 1/21/17.
- */
+import me.sinziana.vanilla.puns.BatteryPuns;
+import me.sinziana.vanilla.puns.ComputerPuns;
+import me.sinziana.vanilla.puns.ElevatorPuns;
+import me.sinziana.vanilla.puns.FoodPuns;
+import me.sinziana.vanilla.puns.SpacePuns;
 
 public class PunDatabase {
 
@@ -96,21 +93,26 @@ public class PunDatabase {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    loadDatabase();
+                   loadDatabase(AnimalPuns.FILE_NAME, PunCategory.ANIMAL);
+                    loadDatabase(BatteryPuns.FILE_NAME, PunCategory.BATTERY);
+                    loadDatabase(ComputerPuns.FILE_NAME, PunCategory.COMPUTER);
+                    loadDatabase(ElevatorPuns.FILE_NAME, PunCategory.ELEVATOR);
+                    loadDatabase(FoodPuns.FILE_NAME, PunCategory.FOOD);
+                    loadDatabase(SpacePuns.FILE_NAME, PunCategory.SPACE);
                 }
             }).start();
         }
 
-        private void loadDatabase() {
+        private void loadDatabase(String filename, String keyword) {
             BufferedReader reader = null;
             try {
-                reader = new BufferedReader(new InputStreamReader(_context.getAssets().open(AnimalPuns.FILE_NAME)));
+                reader = new BufferedReader(new InputStreamReader(_context.getAssets().open(filename)));
                 String mLine;
                 while ((mLine = reader.readLine()) != null) {
-                    addPuns("animal",mLine);
+                    addPuns(keyword, mLine);
                 }
             } catch (IOException e) {
-
+                Log.e("Database","IOException " + e.getMessage());
             } finally {
                 if (reader != null) {
                     try {

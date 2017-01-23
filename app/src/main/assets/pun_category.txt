@@ -1,0 +1,6 @@
+animal
+battery
+computer
+elevator
+food
+space
