@@ -14,6 +14,7 @@ import me.sinziana.vanilla.puns.ComputerPuns;
 import me.sinziana.vanilla.puns.ElevatorPuns;
 import me.sinziana.vanilla.puns.FoodPuns;
 import me.sinziana.vanilla.puns.SpacePuns;
+import me.sinziana.vanilla.screens.PunOfTheDay;
 
 /**
  * Created by sinziana on 1/14/17.
@@ -41,7 +42,7 @@ public class MainActivityFragment extends Fragment {
         foodButton.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v) {
-                goToFragment(new FoodPuns());
+                goToFragment(new PunOfTheDay());
             }
         });
 
