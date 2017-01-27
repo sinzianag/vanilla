@@ -42,24 +42,12 @@ public class PunDatabase {
         return query(selection, selectionArgs, columns);
     }
 
-    public String getFirstEntry() {
-        String selection = "LIMIT 2";
-
-       Cursor cur =  query(selection, null, null);
-        if (cur != null) {
-            cur.moveToFirst();
-            return cur.getString(1);
-        }
-
-        return "no string";
-    }
-
     private Cursor query(String selection, String[] selectionArgs, String[] columns) {
         SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
         builder.setTables(FTS_VIRTUAL_TABLE);
 
         Cursor cursor = builder.query(_databaseHelper.getReadableDatabase(),
-                columns, null,  null, null, null, "1");
+                columns, selection, selectionArgs, null, null, null);
 
         if (cursor == null) {
             return null;
