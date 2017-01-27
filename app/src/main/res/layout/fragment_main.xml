@@ -9,8 +9,8 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/computer_puns"
-        android:id="@+id/computer"
+        android:text="@string/pun_of_the_day"
+        android:id="@+id/pun_of_the_day"
         android:layout_marginTop="112dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"/>
@@ -18,9 +18,9 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/food_puns"
-        android:id="@+id/food"
-        android:layout_below="@+id/computer"
+        android:text="@string/random_pun"
+        android:id="@+id/random_pun"
+        android:layout_below="@+id/pun_of_the_day"
         android:layout_centerHorizontal="true"/>
 
     <Button
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:text="@string/space_puns"
         android:id="@+id/space"
-        android:layout_below="@+id/food"
+        android:layout_below="@+id/random_pun"
         android:layout_centerHorizontal="true"/>
 
     <Button

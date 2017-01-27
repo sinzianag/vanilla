@@ -31,18 +31,18 @@ public class MainActivityFragment extends Fragment {
 
         View mainFragmentView = inflater.inflate(R.layout.fragment_main, container, false);
 
-        Button computerButton = (Button) mainFragmentView.findViewById(R.id.computer);
+        Button computerButton = (Button) mainFragmentView.findViewById(R.id.pun_of_the_day);
         computerButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                goToFragment(new ComputerPuns());
+                goToFragment(new PunOfTheDay());
             }
         });
 
-        Button foodButton = (Button) mainFragmentView.findViewById(R.id.food);
+        Button foodButton = (Button) mainFragmentView.findViewById(R.id.random_pun);
         foodButton.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v) {
-                goToFragment(new PunOfTheDay());
+                goToFragment(new FoodPuns());
             }
         });
 
