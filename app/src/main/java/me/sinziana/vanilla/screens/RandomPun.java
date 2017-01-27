@@ -10,39 +10,33 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import me.sinziana.vanilla.PunDatabase;
 import me.sinziana.vanilla.R;
 
 /**
- *
+ * sinziana on 1/26/17.
  */
 
-public class PunOfTheDay extends Fragment {
+public class RandomPun extends Fragment {
 
-   public PunOfTheDay() {
-
-   }
+    public RandomPun() {
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         ActionBar ab = ((AppCompatActivity)getActivity()).getSupportActionBar();
-        ab.setTitle(R.string.pun_of_the_day);
+        ab.setTitle(R.string.random_pun);
         ab.invalidateOptionsMenu();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View _potd = (View) inflater.inflate(R.layout.pun_of_the_day, container, false);
+        View _potd = (View) inflater.inflate(R.layout.random_puns, container, false);
 
         TextView _textView = (TextView) _potd.findViewById(R.id.pun);
-        TextView _date = (TextView) _potd.findViewById(R.id.date);
-        _date.setText(new SimpleDateFormat("MM - dd - yyyy").format(new Date()));
         Button _moreButton = (Button) _potd.findViewById(R.id.more);
 
         PunDatabase pd = new PunDatabase(this.getContext());
@@ -57,5 +51,4 @@ public class PunOfTheDay extends Fragment {
 
         return _potd;
     }
-
 }
