@@ -42,6 +42,31 @@ public class PunDatabase {
         return query(selection, selectionArgs, columns);
     }
 
+    public Cursor getRandomPun() {
+        return null;
+    }
+
+    public Cursor getPunForDate() {
+        return null;
+    }
+
+    /**
+     * Get the puns assigned for a certain pun category
+     * @param category - one of the PunCategories
+     * @return Cursor with all the puns
+     */
+    public Cursor getPunsForCategory(String category) {
+        return null;
+    }
+
+    public Cursor getFavoritePuns() {
+        return null;
+    }
+
+    /*
+     *  TODO: Update Puns
+     */
+
     private Cursor query(String selection, String[] selectionArgs, String[] columns) {
         SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
         builder.setTables(FTS_VIRTUAL_TABLE);
@@ -59,7 +84,7 @@ public class PunDatabase {
     }
 
     private class DatabaseOpenHelper extends SQLiteOpenHelper {
-        
+
         private final Context _context;
         private SQLiteDatabase _database;
 
@@ -93,7 +118,7 @@ public class PunDatabase {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                   loadDatabase(AnimalPuns.FILE_NAME, PunCategory.ANIMAL);
+                    loadDatabase(AnimalPuns.FILE_NAME, PunCategory.ANIMAL);
                     loadDatabase(BatteryPuns.FILE_NAME, PunCategory.BATTERY);
                     loadDatabase(ComputerPuns.FILE_NAME, PunCategory.COMPUTER);
                     loadDatabase(ElevatorPuns.FILE_NAME, PunCategory.ELEVATOR);
