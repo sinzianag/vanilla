@@ -67,6 +67,13 @@ public class PunDatabase {
      *  TODO: Update Puns
      */
 
+    /**
+     * Access the database
+     * @param selection
+     * @param selectionArgs
+     * @param columns
+     * @return
+     */
     private Cursor query(String selection, String[] selectionArgs, String[] columns) {
         SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
         builder.setTables(FTS_VIRTUAL_TABLE);
