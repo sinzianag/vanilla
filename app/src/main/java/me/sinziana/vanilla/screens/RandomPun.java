@@ -41,7 +41,7 @@ public class RandomPun extends Fragment {
 
         PunDatabase pd = new PunDatabase(this.getContext());
 
-        _textView.setText(pd.getFirstEntry());
+        //_textView.setText(pd.getFirstEntry());
 
         _moreButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

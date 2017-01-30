@@ -46,7 +46,7 @@ public class PunDatabase {
         return null;
     }
 
-    public Cursor getPunForDate() {
+    public Cursor getPunForToday() {
         return null;
     }
 

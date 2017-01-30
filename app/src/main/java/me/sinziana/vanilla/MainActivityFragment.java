@@ -76,6 +76,7 @@ public class MainActivityFragment extends Fragment {
                 goToFragment(new AnimalPuns());
             }
         });
+
         return mainFragmentView;
     }
 
