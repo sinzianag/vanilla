@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.util.Log;
@@ -19,67 +20,43 @@ import me.sinziana.vanilla.puns.ElevatorPuns;
 import me.sinziana.vanilla.puns.FoodPuns;
 import me.sinziana.vanilla.puns.SpacePuns;
 
-public class PunDatabase {
+public class PunDBHelper {
 
     private static final String DATABASE_NAME = "pun_database";
     private static final int DATABASE_VERSION = 1;
     private static final String KEYWORDS = "keywords";
-    private static final String PUNS = "pun_list";
+    private static final String PUNS = "puns";
 
-    private static final String FTS_VIRTUAL_TABLE = "FTS";
+    public static final String FTS_VIRTUAL_TABLE = "FTS";
 
     private final DatabaseOpenHelper _databaseHelper;
 
-    public PunDatabase(Context context) {
+    public PunDBHelper(Context context) {
 
         _databaseHelper = new DatabaseOpenHelper(context);
     }
 
-    public Cursor getWordMatches(String query, String[] columns) {
-        String selection = FTS_VIRTUAL_TABLE + " MATCH ?";
-        String[] selectionArgs = new String[] {query+"*"};
-
-        return query(selection, selectionArgs, columns);
-    }
-
-    public Cursor getRandomPun() {
-        return null;
-    }
-
-    public Cursor getPunForToday() {
-        return null;
-    }
-
     /**
-     * Get the puns assigned for a certain pun category
-     * @param category - one of the PunCategories
-     * @return Cursor with all the puns
-     */
-    public Cursor getPunsForCategory(String category) {
-        return null;
-    }
-
-    public Cursor getFavoritePuns() {
-        return null;
-    }
-
-    /*
-     *  TODO: Update Puns
-     */
-
-    /**
-     * Access the database
+     *
+     * @param columns
      * @param selection
      * @param selectionArgs
-     * @param columns
+     * @param groupBy
+     * @param having
+     * @param sortOrder
      * @return
      */
-    private Cursor query(String selection, String[] selectionArgs, String[] columns) {
+    public Cursor query(String[] columns, String selection, String[] selectionArgs, String groupBy,
+                        String having, String sortOrder) {
         SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
         builder.setTables(FTS_VIRTUAL_TABLE);
-
-        Cursor cursor = builder.query(_databaseHelper.getReadableDatabase(),
-                columns, selection, selectionArgs, null, null, null);
+        Cursor cursor = null;
+        try {
+            cursor = builder.query(_databaseHelper.getReadableDatabase(),
+                    columns, selection, selectionArgs, groupBy, having, sortOrder);
+        } catch (SQLiteException e) {
+            Log.e("Database Error", "Bad Query" + e);
+        }
 
         if (cursor == null) {
             return null;

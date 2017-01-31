@@ -13,7 +13,7 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import me.sinziana.vanilla.PunDatabase;
+import me.sinziana.vanilla.PunDBHelper;
 import me.sinziana.vanilla.R;
 
 /**
@@ -45,7 +45,7 @@ public class PunOfTheDay extends Fragment {
         _date.setText(new SimpleDateFormat("MM - dd - yyyy").format(new Date()));
         Button _moreButton = (Button) _potd.findViewById(R.id.more);
 
-        PunDatabase pd = new PunDatabase(this.getContext());
+        PunDBHelper pd = new PunDBHelper(this.getContext());
 
         //_textView.setText(pd.getFirstEntry());
 

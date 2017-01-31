@@ -9,10 +9,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.android.volley.*;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
 /**
  * Sinziana on 1/17/17.
  */
@@ -69,8 +65,8 @@ public class SearchActivity extends AppCompatActivity {
 //            });
 //            queue.add(stringRequest);
 
-            PunDatabase database = new PunDatabase(this);
-            Cursor cur = database.getWordMatches(query, null);
+            PunStorage database = new PunStorage(this);
+            Cursor cur = database.searchForPuns(query);
 
             if (cur != null) {
                 cur.moveToFirst();

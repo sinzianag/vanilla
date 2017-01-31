@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import me.sinziana.vanilla.PunDatabase;
+import me.sinziana.vanilla.PunDBHelper;
 import me.sinziana.vanilla.R;
 
 /**
@@ -39,7 +39,7 @@ public class RandomPun extends Fragment {
         TextView _textView = (TextView) _potd.findViewById(R.id.pun);
         Button _moreButton = (Button) _potd.findViewById(R.id.more);
 
-        PunDatabase pd = new PunDatabase(this.getContext());
+        PunDBHelper pd = new PunDBHelper(this.getContext());
 
         //_textView.setText(pd.getFirstEntry());
 
