@@ -56,4 +56,18 @@ public class PunStorage {
 
         return _db.query(null, selection, selectionArgs, null, null, null);
     }
+
+    public String getTodaysPun() {
+        String today = PunUtils.getTodayString();
+        Cursor cur = this.searchForPuns(today);
+
+        if (cur != null) {
+            cur.moveToFirst();
+            while (cur.isAfterLast() == false) {
+               return cur.getString(1);
+            }
+        }
+        
+        return null;
+    }
 }
