@@ -76,6 +76,8 @@ public class SearchActivity extends AppCompatActivity {
                 }
             }
 
+            database.getCategories();
+
         }
     }
 

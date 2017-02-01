@@ -22,12 +22,12 @@ import me.sinziana.vanilla.puns.SpacePuns;
 
 public class PunDBHelper {
 
-    private static final String DATABASE_NAME = "pun_database";
-    private static final int DATABASE_VERSION = 1;
-    private static final String KEYWORDS = "keywords";
-    private static final String PUNS = "puns";
-    private static final String CAT_ID = "id";
-    private static final String CAT_NAME = "name";
+    public static final String DATABASE_NAME = "pun_database";
+    public static final int DATABASE_VERSION = 1;
+    public static final String KEYWORDS = "keywords";
+    public static final String PUNS = "puns";
+    public static final String CAT_ID = "id";
+    public static final String CAT_NAME = "name";
 
     public static final String PUN_TABLE = "FTS";
     public static final String CATEGORY_TABLE = "CATEGORY";
@@ -49,10 +49,10 @@ public class PunDBHelper {
      * @param sortOrder
      * @return
      */
-    public Cursor query(String[] columns, String selection, String[] selectionArgs, String groupBy,
+    public Cursor query(String db_name, String[] columns, String selection, String[] selectionArgs, String groupBy,
                         String having, String sortOrder) {
         SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
-        builder.setTables(PUN_TABLE);
+        builder.setTables(db_name);
         Cursor cursor = null;
         try {
             cursor = builder.query(_databaseHelper.getReadableDatabase(),

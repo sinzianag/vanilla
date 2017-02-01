@@ -47,14 +47,14 @@ public class PunStorage {
 
     public Cursor getPuns() {
         String[] columns = {COL_PUNS};
-        return _db.query(columns, null, null, null, null, null);
+        return _db.query(_db.PUN_TABLE, columns, null, null, null, null, null);
     }
 
     public Cursor searchForPuns(String query) {
-        String selection = _db.FTS_VIRTUAL_TABLE + " MATCH ?";
+        String selection = _db.PUN_TABLE + " MATCH ?";
         String[] selectionArgs = new String[] {query+"*"};
 
-        return _db.query(null, selection, selectionArgs, null, null, null);
+        return _db.query(_db.PUN_TABLE, null, selection, selectionArgs, null, null, null);
     }
 
     public String getTodaysPun() {
@@ -64,7 +64,7 @@ public class PunStorage {
         if (cur != null) {
             cur.moveToFirst();
             while (cur.isAfterLast() == false) {
-               return cur.getString(1);
+               return cur.getString(0);
             }
         }
 
@@ -72,6 +72,15 @@ public class PunStorage {
     }
 
     public Cursor getCategories() {
-        return null;
+        String[] columns = {_db.CAT_NAME};
+        return _db.query(_db.CATEGORY_TABLE, columns, null, null, null, null, null);
+
+//        if (cur != null) {
+//            cur.moveToFirst();
+//            while (cur.isAfterLast() == false) {
+//                System.out.println("Categories: " +  cur.getString(0));
+//                cur.moveToNext();
+//            }
+//        }
     }
 }
