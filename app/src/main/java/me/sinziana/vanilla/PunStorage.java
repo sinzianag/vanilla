@@ -67,7 +67,11 @@ public class PunStorage {
                return cur.getString(1);
             }
         }
-        
+
+        return null;
+    }
+
+    public Cursor getCategories() {
         return null;
     }
 }
