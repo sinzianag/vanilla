@@ -15,12 +15,21 @@ class PunStorage {
         _db = new PunDBHelper(context);
     }
 
+    /**
+     * Get all the puns from the DataBase
+     * @return Cursor with puns
+     */
     public Cursor getPuns() {
         String COL_PUNS = "puns";
         String[] columns = {COL_PUNS};
         return _db.query(PunDBHelper.PUN_TABLE, columns, null, null, null, null, null);
     }
 
+    /**
+     * Search for puns
+     * @param query - What we're searching for
+     * @return Cursor with the puns returned
+     */
     public Cursor searchForPuns(String query) {
         String selection = PunDBHelper.PUN_TABLE + " MATCH ?";
         String[] selectionArgs = new String[] {query+"*"};
@@ -28,6 +37,10 @@ class PunStorage {
         return _db.query(PunDBHelper.PUN_TABLE, null, selection, selectionArgs, null, null, null);
     }
 
+    /**
+     * Get the pun for today
+     * @return String of today's pun
+     */
     public String getTodaysPun() {
         String today = PunUtils.getTodayString();
         Cursor cur = this.searchForPuns(today);
