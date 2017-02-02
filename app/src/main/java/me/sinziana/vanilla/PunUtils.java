@@ -5,7 +5,6 @@ import android.util.Log;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -20,7 +19,7 @@ public class PunUtils {
     /**
      * The date format used in the application
      */
-    public static final String DATE_FORMAT = "mm/dd/yyyy";
+    private static final String DATE_FORMAT = "mm/dd/yyyy";
 
     /**
      * Check if the date we're passing is today
@@ -42,7 +41,7 @@ public class PunUtils {
     }
 
     /**
-     * Get today's date in the format that we use to store the date throught the application.
+     * Get today's date in the format that we use to store the date through the application.
      *
      * @return string with today's date
      */

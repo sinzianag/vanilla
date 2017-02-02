@@ -4,6 +4,7 @@ import android.app.SearchManager;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -16,7 +17,7 @@ import android.widget.TextView;
 public class SearchActivity extends AppCompatActivity {
 
     private Toolbar _toolbar;
-    TextView _textView;
+    private TextView _textView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,8 +45,11 @@ public class SearchActivity extends AppCompatActivity {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
             System.out.println("%% query" + query);
-            getSupportActionBar().setTitle("Searching for..." + query);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            ActionBar ab = getSupportActionBar();
+            if (ab != null) {
+                ab.setTitle("Searching for..." + query);
+                ab.setDisplayHomeAsUpEnabled(true);
+            }
 
 //            RequestQueue queue = Volley.newRequestQueue(this);
 //            // this is for the emulator ( Change to 127.0.0.1 )
@@ -70,7 +74,7 @@ public class SearchActivity extends AppCompatActivity {
 
             if (cur != null) {
                 cur.moveToFirst();
-                while (cur.isAfterLast() == false) {
+                while (!cur.isAfterLast()) {
                     _textView.append("\n" + cur.getString(1));
                     cur.moveToNext();
                 }

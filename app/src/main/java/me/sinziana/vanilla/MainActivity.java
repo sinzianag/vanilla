@@ -4,6 +4,7 @@ import android.app.FragmentManager;
 import android.app.SearchManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
@@ -71,11 +72,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onBackStackChanged() {
 
+                ActionBar ab = getSupportActionBar();
+
+                if (ab == null) {
+                    return;
+                }
+
                 if (getFragmentManager().getBackStackEntryCount() > 0) {
-                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                    ab.setDisplayHomeAsUpEnabled(true);
                 } else {
-                    getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-                    getSupportActionBar().setTitle(R.string.app_name);
+                    ab.setDisplayHomeAsUpEnabled(false);
+                    ab.setTitle(R.string.app_name);
                 }
             }
 

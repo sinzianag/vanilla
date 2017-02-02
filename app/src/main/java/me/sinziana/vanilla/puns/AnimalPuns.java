@@ -17,9 +17,8 @@ import me.sinziana.vanilla.R;
 
 public class AnimalPuns extends Fragment {
 
-    public static String FILE_NAME = "animal_puns.txt";
+    public static final String FILE_NAME = "animal_puns.txt";
 
-    private View _puns;
     private Iterator<String> _punIterator;
     private TextView _textView;
     private Button _moreButton;
@@ -30,26 +29,30 @@ public class AnimalPuns extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActionBar ab = ((AppCompatActivity)getActivity()).getSupportActionBar();
-        ab.setTitle(R.string.animal_puns);
-        ab.invalidateOptionsMenu();
+
+        if (ab != null) {
+            ab.setTitle(R.string.animal_puns);
+            ab.invalidateOptionsMenu();
+        }
+
         _punIterator = PunReader.readPuns(FILE_NAME, getActivity()).iterator();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        _puns = (View) inflater.inflate(R.layout.animal_puns, container, false);
+        View _puns = inflater.inflate(R.layout.animal_puns, container, false);
         _textView = (TextView) _puns.findViewById(R.id.pun);
         _moreButton = (Button) _puns.findViewById(R.id.more);
 
         if(_punIterator.hasNext()) {
-            _textView.setText((CharSequence) _punIterator.next());
+            _textView.setText(_punIterator.next());
         }
 
         _moreButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if(_punIterator.hasNext()) {
-                    _textView.setText((CharSequence) _punIterator.next());
+                    _textView.setText(_punIterator.next());
                 }
                 if (!_punIterator.hasNext()) {
                     _moreButton.setEnabled(false);

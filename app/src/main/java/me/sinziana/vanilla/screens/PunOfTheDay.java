@@ -31,14 +31,16 @@ public class PunOfTheDay extends Fragment {
         super.onCreate(savedInstanceState);
 
         ActionBar ab = ((AppCompatActivity)getActivity()).getSupportActionBar();
-        ab.setTitle(R.string.pun_of_the_day);
-        ab.invalidateOptionsMenu();
+        if (ab != null) {
+            ab.setTitle(R.string.pun_of_the_day);
+            ab.invalidateOptionsMenu();
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View _potd = (View) inflater.inflate(R.layout.pun_of_the_day, container, false);
+        View _potd = inflater.inflate(R.layout.pun_of_the_day, container, false);
 
         TextView _textView = (TextView) _potd.findViewById(R.id.pun);
         TextView _date = (TextView) _potd.findViewById(R.id.date);

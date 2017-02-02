@@ -27,14 +27,16 @@ public class RandomPun extends Fragment {
         super.onCreate(savedInstanceState);
 
         ActionBar ab = ((AppCompatActivity)getActivity()).getSupportActionBar();
-        ab.setTitle(R.string.random_pun);
-        ab.invalidateOptionsMenu();
+        if (ab != null) {
+            ab.setTitle(R.string.random_pun);
+            ab.invalidateOptionsMenu();
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View _potd = (View) inflater.inflate(R.layout.random_puns, container, false);
+        View _potd = inflater.inflate(R.layout.random_puns, container, false);
 
         TextView _textView = (TextView) _potd.findViewById(R.id.pun);
         Button _moreButton = (Button) _potd.findViewById(R.id.more);
