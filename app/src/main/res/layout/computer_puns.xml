@@ -12,7 +12,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/pun"
-        android:textSize="24dp"
+        android:textSize="24sp"
         android:layout_marginTop="112dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"/>

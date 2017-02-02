@@ -17,34 +17,6 @@ public class PunStorage {
         _db = new PunDBHelper(context);
     }
 
-//    public Cursor getWordMatches(String query, String[] columns) {
-//        String selection = FTS_VIRTUAL_TABLE + " MATCH ?";
-//        String[] selectionArgs = new String[] {query+"*"};
-//
-//        return query(selection, selectionArgs, columns);
-//    }
-//
-//    public Cursor getRandomPun() {
-//        return null;
-//    }
-//
-//    public Cursor getPunForToday() {
-//        return null;
-//    }
-//
-//    /**
-//     * Get the puns assigned for a certain pun category
-//     * @param category - one of the PunCategories
-//     * @return Cursor with all the puns
-//     */
-//    public Cursor getPunsForCategory(String category) {
-//        return null;
-//    }
-//
-//    public Cursor getFavoritePuns() {
-//        return null;
-//    }
-
     public Cursor getPuns() {
         String[] columns = {COL_PUNS};
         return _db.query(_db.PUN_TABLE, columns, null, null, null, null, null);
