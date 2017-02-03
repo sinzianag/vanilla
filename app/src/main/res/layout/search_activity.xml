@@ -1,7 +1,7 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/search_activity"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/my_toolbar"
@@ -11,13 +11,11 @@
         android:elevation="4dp"
         android:theme="@style/ToolBarStyle" />
 
-    <TextView
-        android:text=""
-        android:layout_marginTop="80dp"
-        android:layout_marginLeft="20dp"
+    <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/listview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView" />
+        android:layout_below="@id/my_toolbar"/>
 
 
-</FrameLayout>
+</RelativeLayout>

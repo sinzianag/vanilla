@@ -1,6 +1,7 @@
 package me.sinziana.vanilla;
 
 import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -8,7 +9,15 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Sinziana on 1/17/17.
@@ -25,7 +34,7 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.search_activity);
 
         _toolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        _textView = (TextView) findViewById(R.id.textView);
+        //_textView = (TextView) findViewById(R.id.textView);
         setSupportActionBar(_toolbar);
         System.out.println("%% onCreate");
     }
@@ -72,15 +81,39 @@ public class SearchActivity extends AppCompatActivity {
             PunStorage database = new PunStorage(this);
             Cursor cur = database.searchForPuns(query);
 
+            final ArrayList<String> list = new ArrayList<String>();
             if (cur != null) {
                 cur.moveToFirst();
                 while (!cur.isAfterLast()) {
-                    _textView.append("\n" + cur.getString(1));
+                    list.add(cur.getString(1));
                     cur.moveToNext();
                 }
             }
 
-            database.getCategories();
+            final ListView listview = (ListView) findViewById(R.id.listview);
+
+            final StableArrayAdapter adapter = new StableArrayAdapter(this,
+                    android.R.layout.simple_list_item_1, list);
+            listview.setAdapter(adapter);
+
+            listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                @Override
+                public void onItemClick(AdapterView<?> parent, final View view,
+                                        int position, long id) {
+                    final String item = (String) parent.getItemAtPosition(position);
+                    view.animate().setDuration(2000).alpha(0)
+                            .withEndAction(new Runnable() {
+                                @Override
+                                public void run() {
+                                    list.remove(item);
+                                    adapter.notifyDataSetChanged();
+                                    view.setAlpha(1);
+                                }
+                            });
+                }
+
+            });
 
         }
     }
@@ -93,6 +126,31 @@ public class SearchActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private class StableArrayAdapter extends ArrayAdapter<String> {
+
+        HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
+
+        public StableArrayAdapter(Context context, int textViewResourceId,
+                                  List<String> objects) {
+            super(context, textViewResourceId, objects);
+            for (int i = 0; i < objects.size(); ++i) {
+                mIdMap.put(objects.get(i), i);
+            }
+        }
+
+        @Override
+        public long getItemId(int position) {
+            String item = getItem(position);
+            return mIdMap.get(item);
+        }
+
+        @Override
+        public boolean hasStableIds() {
+            return true;
+        }
+
     }
 
 }
