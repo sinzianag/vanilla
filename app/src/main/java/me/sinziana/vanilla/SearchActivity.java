@@ -92,8 +92,7 @@ public class SearchActivity extends AppCompatActivity {
 
             final ListView listview = (ListView) findViewById(R.id.listview);
 
-            final StableArrayAdapter adapter = new StableArrayAdapter(this,
-                    android.R.layout.simple_list_item_1, list);
+            final StableArrayAdapter adapter = new StableArrayAdapter(this, R.layout.pun_result, list);
             listview.setAdapter(adapter);
 
             listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
