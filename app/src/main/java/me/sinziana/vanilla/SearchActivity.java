@@ -48,10 +48,15 @@ public class SearchActivity extends AppCompatActivity {
         handleIntent(intent);
     }
 
+    /**
+     * Handle receiving a new intent from a search
+     * @param intent
+     */
     private void handleIntent(Intent intent) {
         System.out.println("%% handleIntent");
 
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            // TODO - Save query so  the app can resume state when comming out of background.
             String query = intent.getStringExtra(SearchManager.QUERY);
             System.out.println("%% query" + query);
             ActionBar ab = getSupportActionBar();
@@ -91,7 +96,6 @@ public class SearchActivity extends AppCompatActivity {
             }
 
             final ListView listview = (ListView) findViewById(R.id.listview);
-
             final StableArrayAdapter adapter = new StableArrayAdapter(this, R.layout.pun_result, list);
             listview.setAdapter(adapter);
 
@@ -127,6 +131,9 @@ public class SearchActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Adapter for the List View
+     */
     private class StableArrayAdapter extends ArrayAdapter<String> {
 
         HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
