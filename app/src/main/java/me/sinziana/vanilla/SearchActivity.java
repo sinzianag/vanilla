@@ -20,13 +20,15 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Sinziana on 1/17/17.
+ * This is the activity used for Searching a Pun
+ * It will receive an intent that contains a query
+ *
+ * @author  sgafitan
  */
 
 public class SearchActivity extends AppCompatActivity {
 
     private Toolbar _toolbar;
-    private TextView _textView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,6 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.search_activity);
 
         _toolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        //_textView = (TextView) findViewById(R.id.textView);
         setSupportActionBar(_toolbar);
         System.out.println("%% onCreate");
     }
@@ -64,24 +65,6 @@ public class SearchActivity extends AppCompatActivity {
                 ab.setTitle("Searching for..." + query);
                 ab.setDisplayHomeAsUpEnabled(true);
             }
-
-//            RequestQueue queue = Volley.newRequestQueue(this);
-//            // this is for the emulator ( Change to 127.0.0.1 )
-//            String url ="http://10.0.2.2:8080/" + query;
-//
-//            StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-//                    new Response.Listener<String>() {
-//                        @Override
-//                        public void onResponse(String response) {
-//                            _textView.setText(response);
-//                        }
-//                    }, new Response.ErrorListener() {
-//                @Override
-//                public void onErrorResponse(VolleyError error) {
-//                    _textView.setText("That didn't work! " + error.getMessage());
-//                }
-//            });
-//            queue.add(stringRequest);
 
             PunStorage database = new PunStorage(this);
             Cursor cur = database.searchForPuns(query);
@@ -160,4 +143,22 @@ public class SearchActivity extends AppCompatActivity {
     }
 
 }
+
+//            RequestQueue queue = Volley.newRequestQueue(this);
+//            // this is for the emulator ( Change to 127.0.0.1 )
+//            String url ="http://10.0.2.2:8080/" + query;
+//
+//            StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+//                    new Response.Listener<String>() {
+//                        @Override
+//                        public void onResponse(String response) {
+//                            _textView.setText(response);
+//                        }
+//                    }, new Response.ErrorListener() {
+//                @Override
+//                public void onErrorResponse(VolleyError error) {
+//                    _textView.setText("That didn't work! " + error.getMessage());
+//                }
+//            });
+//            queue.add(stringRequest);
 
