@@ -12,12 +12,11 @@ import me.sinziana.vanilla.puns.AnimalPuns;
 import me.sinziana.vanilla.puns.BatteryPuns;
 import me.sinziana.vanilla.puns.ElevatorPuns;
 import me.sinziana.vanilla.puns.SpacePuns;
+import me.sinziana.vanilla.screens.FavoritePuns;
+import me.sinziana.vanilla.screens.PunCategories;
 import me.sinziana.vanilla.screens.PunOfTheDay;
 import me.sinziana.vanilla.screens.RandomPun;
 
-/**
- * Created by sinziana on 1/14/17.
- */
 
 public class MainActivityFragment extends Fragment {
 
@@ -45,19 +44,19 @@ public class MainActivityFragment extends Fragment {
             }
         });
 
-        Button spaceButton = (Button) mainFragmentView.findViewById(R.id.space);
+        Button spaceButton = (Button) mainFragmentView.findViewById(R.id.puns_categories);
         spaceButton.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v) {
-                goToFragment(new SpacePuns());
+                goToFragment(new PunCategories());
             }
         });
 
-        Button elevatorButton = (Button) mainFragmentView.findViewById(R.id.elevator);
+        Button elevatorButton = (Button) mainFragmentView.findViewById(R.id.favorites);
         elevatorButton.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v) {
-                goToFragment(new ElevatorPuns());
+                goToFragment(new FavoritePuns());
             }
         });
 

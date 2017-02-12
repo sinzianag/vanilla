@@ -23,4 +23,8 @@
 
     <string name="random_pun">Random Pun</string>
 
+    <string name="pun_categories">Pun Categories</string>
+
+    <string name="favorites">Favorite Puns</string>
+
 </resources>

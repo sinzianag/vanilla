@@ -26,17 +26,17 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/space_puns"
-        android:id="@+id/space"
+        android:text="@string/pun_categories"
+        android:id="@+id/puns_categories"
         android:layout_below="@+id/random_pun"
         android:layout_centerHorizontal="true"/>
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/elevator_puns"
-        android:id="@+id/elevator"
-        android:layout_below="@+id/space"
+        android:text="@string/favorites"
+        android:id="@+id/favorites"
+        android:layout_below="@+id/puns_categories"
         android:layout_centerHorizontal="true"/>
 
     <Button
@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:text="@string/battery_puns"
         android:id="@+id/battery"
-        android:layout_below="@+id/elevator"
+        android:layout_below="@+id/favorites"
         android:layout_centerHorizontal="true"/>
 
     <Button
