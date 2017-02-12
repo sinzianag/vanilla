@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:text="@string/pun_of_the_day"
         android:id="@+id/pun_of_the_day"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="212dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"/>
 
@@ -37,22 +37,6 @@
         android:text="@string/favorites"
         android:id="@+id/favorites"
         android:layout_below="@+id/puns_categories"
-        android:layout_centerHorizontal="true"/>
-
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/battery_puns"
-        android:id="@+id/battery"
-        android:layout_below="@+id/favorites"
-        android:layout_centerHorizontal="true"/>
-
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/animal_puns"
-        android:id="@+id/animal"
-        android:layout_below="@+id/battery"
         android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

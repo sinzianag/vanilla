@@ -60,22 +60,6 @@ public class MainActivityFragment extends Fragment {
             }
         });
 
-        Button batteryButton = (Button) mainFragmentView.findViewById(R.id.battery);
-        batteryButton.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v) {
-                goToFragment(new BatteryPuns());
-            }
-        });
-
-        Button animalButton = (Button) mainFragmentView.findViewById(R.id.animal);
-        animalButton.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v) {
-                goToFragment(new AnimalPuns());
-            }
-        });
-
         return mainFragmentView;
     }
 
