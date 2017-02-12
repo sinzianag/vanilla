@@ -13,10 +13,6 @@ import android.widget.TextView;
 import me.sinziana.vanilla.PunDBHelper;
 import me.sinziana.vanilla.R;
 
-/**
- * sinziana on 1/26/17.
- */
-
 public class RandomPun extends Fragment {
 
     public RandomPun() {

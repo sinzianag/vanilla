@@ -10,8 +10,6 @@ import java.util.Date;
 /**
  * Utilities class for the Puns app.
  * Simple methods that the app can use
- *
- * sinziana on 1/29/17.
  */
 
 public class PunUtils {

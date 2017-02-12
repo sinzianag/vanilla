@@ -16,10 +16,6 @@ import java.util.Date;
 import me.sinziana.vanilla.PunDBHelper;
 import me.sinziana.vanilla.R;
 
-/**
- *
- */
-
 public class PunOfTheDay extends Fragment {
 
    public PunOfTheDay() {

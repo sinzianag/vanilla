@@ -22,8 +22,6 @@ import java.util.List;
 /**
  * This is the activity used for Searching a Pun
  * It will receive an intent that contains a query
- *
- * @author  sgafitan
  */
 
 public class SearchActivity extends AppCompatActivity {

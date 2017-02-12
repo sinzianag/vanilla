@@ -39,16 +39,6 @@ public class PunDBHelper {
         _databaseHelper = new DatabaseOpenHelper(context);
     }
 
-    /**
-     *
-     * @param columns
-     * @param selection
-     * @param selectionArgs
-     * @param groupBy
-     * @param having
-     * @param sortOrder
-     * @return
-     */
     public Cursor query(String db_name, String[] columns, String selection, String[] selectionArgs, String groupBy,
                         String having, String sortOrder) {
         SQLiteQueryBuilder builder = new SQLiteQueryBuilder();

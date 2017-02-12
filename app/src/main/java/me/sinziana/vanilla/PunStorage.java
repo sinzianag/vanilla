@@ -3,9 +3,6 @@ package me.sinziana.vanilla;
 import android.content.Context;
 import android.database.Cursor;
 
-/**
- * sinziana on 1/29/17.
- */
 
 class PunStorage {
 
@@ -25,11 +22,6 @@ class PunStorage {
         return _db.query(PunDBHelper.PUN_TABLE, columns, null, null, null, null, null);
     }
 
-    /**
-     * Search for puns
-     * @param query - What we're searching for
-     * @return Cursor with the puns returned
-     */
     public Cursor searchForPuns(String query) {
         String selection = PunDBHelper.PUN_TABLE + " MATCH ?";
         String[] selectionArgs = new String[] {query+"*"};
@@ -37,10 +29,6 @@ class PunStorage {
         return _db.query(PunDBHelper.PUN_TABLE, null, selection, selectionArgs, null, null, null);
     }
 
-    /**
-     * Get the pun for today
-     * @return String of today's pun
-     */
     public String getTodaysPun() {
         String today = PunUtils.getTodayString();
         Cursor cur = this.searchForPuns(today);
@@ -58,13 +46,5 @@ class PunStorage {
     public Cursor getCategories() {
         String[] columns = {PunDBHelper.CAT_NAME};
         return _db.query(PunDBHelper.CATEGORY_TABLE, columns, null, null, null, null, null);
-
-//        if (cur != null) {
-//            cur.moveToFirst();
-//            while (cur.isAfterLast() == false) {
-//                System.out.println("Categories: " +  cur.getString(0));
-//                cur.moveToNext();
-//            }
-//        }
     }
 }
