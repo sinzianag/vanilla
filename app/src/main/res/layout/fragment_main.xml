@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin">
+    android:background="#57514A"
+    android:orientation="vertical">
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/pun_of_the_day"
         android:id="@+id/pun_of_the_day"
-        android:layout_marginTop="212dp"
+        android:layout_marginTop="?attr/actionBarSize"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:background="@color/color1"/>
+        android:layout_weight="0.25"
+        android:background="@color/color1" />
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/random_pun"
         android:id="@+id/random_pun"
-        android:layout_below="@+id/pun_of_the_day"
+        android:layout_weight="0.25"
         android:layout_centerHorizontal="true"
         android:background="@color/color2"/>
 
@@ -28,8 +29,8 @@
         android:layout_height="wrap_content"
         android:text="@string/pun_categories"
         android:id="@+id/puns_categories"
-        android:layout_below="@+id/random_pun"
         android:layout_centerHorizontal="true"
+        android:layout_weight="0.25"
         android:background="@color/color3"/>
 
     <Button
@@ -37,8 +38,8 @@
         android:layout_height="wrap_content"
         android:text="@string/favorites"
         android:id="@+id/favorites"
-        android:layout_below="@+id/puns_categories"
         android:layout_centerHorizontal="true"
+        android:layout_weight="0.25"
         android:background="@color/color4"/>
 
-</RelativeLayout>
+</LinearLayout>
