@@ -36,6 +36,8 @@ public class SearchActivity extends AppCompatActivity {
         _toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(_toolbar);
         System.out.println("%% onCreate");
+        Intent intent = getIntent();
+        handleIntent(intent);
     }
 
     @Override

@@ -29,39 +29,36 @@ public class MainActivityFragment extends Fragment {
 
         View mainFragmentView = inflater.inflate(R.layout.fragment_main, container, false);
 
-//        Button computerButton = (Button) mainFragmentView.findViewById(R.id.pun_of_the_day);
-//        computerButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                goToFragment(new PunOfTheDay());
-//            }
-//        });
-//
-//        Button foodButton = (Button) mainFragmentView.findViewById(R.id.random_pun);
-//        foodButton.setOnClickListener(new View.OnClickListener()
-//        {
-//            public void onClick(View v) {
-//                goToFragment(new RandomPun());
-//            }
-//        });
-//
-//        Button spaceButton = (Button) mainFragmentView.findViewById(R.id.puns_categories);
-//        spaceButton.setOnClickListener(new View.OnClickListener()
-//        {
-//            public void onClick(View v) {
-//                goToFragment(new PunCategories());
-//            }
-//        });
-//
-//        Button elevatorButton = (Button) mainFragmentView.findViewById(R.id.favorites);
-//        elevatorButton.setOnClickListener(new View.OnClickListener()
-//        {
-//            public void onClick(View v) {
-//                goToFragment(new FavoritePuns());
-//            }
-//        });
+        Button computerButton = (Button) mainFragmentView.findViewById(R.id.pun_of_the_day);
+        computerButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                goToFragment(new PunOfTheDay());
+            }
+        });
 
-        getActivity().getWindow().getDecorView().
-                setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+        Button foodButton = (Button) mainFragmentView.findViewById(R.id.random_pun);
+        foodButton.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View v) {
+                goToFragment(new RandomPun());
+            }
+        });
+
+        Button spaceButton = (Button) mainFragmentView.findViewById(R.id.puns_categories);
+        spaceButton.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View v) {
+                goToFragment(new PunCategories());
+            }
+        });
+
+        Button elevatorButton = (Button) mainFragmentView.findViewById(R.id.favorites);
+        elevatorButton.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View v) {
+                goToFragment(new FavoritePuns());
+            }
+        });
 
         return mainFragmentView;
     }
