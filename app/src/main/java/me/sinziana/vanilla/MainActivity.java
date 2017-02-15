@@ -13,9 +13,6 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
-
-    private SearchView _searchView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.search, menu);
 
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        _searchView = (SearchView) menu.findItem(R.id.search).getActionView();
-        _searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 
         return super.onCreateOptionsMenu(menu);
     }

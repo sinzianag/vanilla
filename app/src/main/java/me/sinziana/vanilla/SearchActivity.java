@@ -7,7 +7,9 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -27,6 +29,8 @@ import java.util.List;
 public class SearchActivity extends AppCompatActivity {
 
     private Toolbar _toolbar;
+
+    private String _query;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,16 +62,16 @@ public class SearchActivity extends AppCompatActivity {
 
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             // TODO - Save query so  the app can resume state when comming out of background.
-            String query = intent.getStringExtra(SearchManager.QUERY);
-            System.out.println("%% query" + query);
+            _query = intent.getStringExtra(SearchManager.QUERY);
+            System.out.println("%% query" + _query);
             ActionBar ab = getSupportActionBar();
             if (ab != null) {
-                ab.setTitle("Searching for..." + query);
+                ab.setTitle(null);
                 ab.setDisplayHomeAsUpEnabled(true);
             }
 
             PunStorage database = new PunStorage(this);
-            Cursor cur = database.searchForPuns(query);
+            Cursor cur = database.searchForPuns(_query);
 
             final ArrayList<String> list = new ArrayList<String>();
             if (cur != null) {
@@ -112,6 +116,20 @@ public class SearchActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.search, menu);
+
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
+        searchView.setIconifiedByDefault(false);
+        searchView.setQuery(_query,false);
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
+
+        return super.onCreateOptionsMenu(menu);
     }
 
     /**
