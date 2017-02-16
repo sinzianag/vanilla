@@ -26,6 +26,7 @@ public class RandomPun extends Fragment {
         if (ab != null) {
             ab.setTitle(R.string.random_pun);
             ab.invalidateOptionsMenu();
+            ab.setDisplayHomeAsUpEnabled(true);
         }
     }
 

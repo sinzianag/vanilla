@@ -23,6 +23,7 @@ public class PunCategories extends Fragment{
         if (ab != null) {
             ab.setTitle(R.string.pun_categories);
             ab.invalidateOptionsMenu();
+            ab.setDisplayHomeAsUpEnabled(true);
         }
     }
 

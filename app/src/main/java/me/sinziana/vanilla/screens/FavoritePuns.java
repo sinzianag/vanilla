@@ -23,6 +23,7 @@ public class FavoritePuns extends Fragment {
         if (ab != null) {
             ab.setTitle(R.string.favorites);
             ab.invalidateOptionsMenu();
+            ab.setDisplayHomeAsUpEnabled(true);
         }
     }
 

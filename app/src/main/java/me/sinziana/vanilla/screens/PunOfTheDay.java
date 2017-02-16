@@ -30,6 +30,7 @@ public class PunOfTheDay extends Fragment {
         if (ab != null) {
             ab.setTitle(R.string.pun_of_the_day);
             ab.invalidateOptionsMenu();
+            ab.setDisplayHomeAsUpEnabled(true);
         }
     }
 

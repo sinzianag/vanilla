@@ -29,7 +29,6 @@ import java.util.List;
 public class SearchActivity extends AppCompatActivity {
 
     private Toolbar _toolbar;
-
     private String _query;
 
     @Override
@@ -39,7 +38,6 @@ public class SearchActivity extends AppCompatActivity {
 
         _toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(_toolbar);
-        System.out.println("%% onCreate");
         Intent intent = getIntent();
         handleIntent(intent);
     }
@@ -49,7 +47,6 @@ public class SearchActivity extends AppCompatActivity {
         super.onNewIntent(intent);
         _toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(_toolbar);
-       System.out.println("%% newIntent");
         handleIntent(intent);
     }
 
@@ -58,12 +55,9 @@ public class SearchActivity extends AppCompatActivity {
      * @param intent
      */
     private void handleIntent(Intent intent) {
-        System.out.println("%% handleIntent");
 
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            // TODO - Save query so  the app can resume state when comming out of background.
             _query = intent.getStringExtra(SearchManager.QUERY);
-            System.out.println("%% query" + _query);
             ActionBar ab = getSupportActionBar();
             if (ab != null) {
                 ab.setTitle(null);
