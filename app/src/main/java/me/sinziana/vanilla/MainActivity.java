@@ -36,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
         handleBackStack();
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        handleBackStack();
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -68,19 +74,18 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
             @Override
             public void onBackStackChanged() {
+            ActionBar ab = getSupportActionBar();
 
-                ActionBar ab = getSupportActionBar();
+            if (ab == null) {
+                return;
+            }
 
-                if (ab == null) {
-                    return;
-                }
-
-                if (getFragmentManager().getBackStackEntryCount() > 0) {
-                    ab.setDisplayHomeAsUpEnabled(true);
-                } else {
-                    ab.setDisplayHomeAsUpEnabled(false);
-                    ab.setTitle(R.string.app_name);
-                }
+            if (getFragmentManager().getBackStackEntryCount() > 0) {
+                ab.setDisplayHomeAsUpEnabled(true);
+            } else {
+                ab.setDisplayHomeAsUpEnabled(false);
+                ab.setTitle(R.string.app_name);
+            }
             }
 
         });
