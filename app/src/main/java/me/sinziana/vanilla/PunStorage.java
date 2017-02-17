@@ -32,7 +32,11 @@ class PunStorage {
 
     private PunDBHelper _db;
 
-    public PunStorage(Context context) {
+    public PunStorage() {
+    }
+
+    public void initialize(Context context) {
+        System.out.println("initialize" + System.currentTimeMillis());
         _db = new PunDBHelper(context);
     }
 

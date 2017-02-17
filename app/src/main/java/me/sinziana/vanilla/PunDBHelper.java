@@ -56,11 +56,12 @@ public class PunDBHelper {
     public static final String PUN_TABLE = "FTS";
     public static final String CATEGORY_TABLE = "CATEGORY";
 
-    private final DatabaseOpenHelper _databaseHelper;
+    private DatabaseOpenHelper _databaseHelper;
 
     public PunDBHelper(Context context) {
-
+        System.out.println("_databaseHelper" + System.currentTimeMillis());
         _databaseHelper = new DatabaseOpenHelper(context);
+        _databaseHelper.getReadableDatabase();
     }
 
     public Cursor query(String db_name, String[] columns, String selection, String[] selectionArgs, String groupBy,
@@ -101,6 +102,7 @@ public class PunDBHelper {
 
         public DatabaseOpenHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
+            System.out.println("DatabaseOpenHelper" + System.currentTimeMillis());
             _context = context;
         }
 
@@ -109,6 +111,7 @@ public class PunDBHelper {
             _database = db;
             _database.execSQL(FTS_TABLE_CREATE);
             _database.execSQL(CATEGORY_TABLE_CREATE);
+            System.out.println("onCreate" + System.currentTimeMillis());
             buildDatabase();
         }
 
@@ -125,13 +128,14 @@ public class PunDBHelper {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
+                    System.out.println("Starting to build the database: " + System.currentTimeMillis());
                     loadDatabase(AnimalPuns.FILE_NAME, PunCategory.ANIMAL);
                     loadDatabase(BatteryPuns.FILE_NAME, PunCategory.BATTERY);
                     loadDatabase(ComputerPuns.FILE_NAME, PunCategory.COMPUTER);
                     loadDatabase(ElevatorPuns.FILE_NAME, PunCategory.ELEVATOR);
                     loadDatabase(FoodPuns.FILE_NAME, PunCategory.FOOD);
                     loadDatabase(SpacePuns.FILE_NAME, PunCategory.SPACE);
-
+                    System.out.println("Finish building the database: " + System.currentTimeMillis());
                     loadCategory();
                 }
             }).start();
