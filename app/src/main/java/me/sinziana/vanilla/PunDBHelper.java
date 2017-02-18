@@ -128,14 +128,12 @@ public class PunDBHelper {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    System.out.println("Starting to build the database: " + System.currentTimeMillis());
                     loadDatabase(AnimalPuns.FILE_NAME, PunCategory.ANIMAL);
                     loadDatabase(BatteryPuns.FILE_NAME, PunCategory.BATTERY);
                     loadDatabase(ComputerPuns.FILE_NAME, PunCategory.COMPUTER);
                     loadDatabase(ElevatorPuns.FILE_NAME, PunCategory.ELEVATOR);
                     loadDatabase(FoodPuns.FILE_NAME, PunCategory.FOOD);
                     loadDatabase(SpacePuns.FILE_NAME, PunCategory.SPACE);
-                    System.out.println("Finish building the database: " + System.currentTimeMillis());
                     loadCategory();
                 }
             }).start();
