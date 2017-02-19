@@ -165,7 +165,7 @@ public class PunDBHelper {
                     try {
                         reader.close();
                     } catch (IOException e) {
-                        //log the exception
+                        Log.e("Database","Could not close buffered reader " + e.getMessage());
                     }
                 }
             }
