@@ -30,8 +30,6 @@ import android.database.Cursor;
 
 class PunStorage {
 
-    private PunDBHelper _db;
-
     public PunStorage() {
     }
 
@@ -45,14 +43,14 @@ class PunStorage {
     public Cursor getPuns() {
         String COL_PUNS = "puns";
         String[] columns = {COL_PUNS};
-        return _db.query(PunDBHelper.PUN_TABLE, columns, null, null, null, null, null);
+        return null; //_db.query(PunDBHelper.PUN_TABLE, columns, null, null, null, null, null);
     }
 
     public Cursor searchForPuns(String query) {
-        String selection = PunDBHelper.PUN_TABLE + " MATCH ?";
+        //String selection = PunDBHelper.PUN_TABLE + " MATCH ?";
         String[] selectionArgs = new String[] {query+"*"};
 
-        return _db.query(PunDBHelper.PUN_TABLE, null, selection, selectionArgs, null, null, null);
+        return null; // _db.query(PunDBHelper.PUN_TABLE, null, selection, selectionArgs, null, null, null);
     }
 
     public String getTodaysPun() {
@@ -70,7 +68,7 @@ class PunStorage {
     }
 
     public Cursor getCategories() {
-        String[] columns = {PunDBHelper.CAT_NAME};
-        return _db.query(PunDBHelper.CATEGORY_TABLE, columns, null, null, null, null, null);
+        //String[] columns = {PunDBHelper.CAT_NAME};
+        return null; // _db.query(PunDBHelper.CATEGORY_TABLE, columns, null, null, null, null, null);
     }
 }

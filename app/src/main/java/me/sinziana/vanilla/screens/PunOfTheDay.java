@@ -37,7 +37,6 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import me.sinziana.vanilla.PunDBHelper;
 import me.sinziana.vanilla.R;
 
 public class PunOfTheDay extends Fragment {
@@ -71,10 +70,6 @@ public class PunOfTheDay extends Fragment {
         TextView _date = (TextView) _potd.findViewById(R.id.date);
         _date.setText(new SimpleDateFormat("MM - dd - yyyy").format(new Date()));
         Button _moreButton = (Button) _potd.findViewById(R.id.more);
-
-        PunDBHelper pd = new PunDBHelper(this.getContext());
-
-        //_textView.setText(pd.getFirstEntry());
 
         _moreButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

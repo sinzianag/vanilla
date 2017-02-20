@@ -34,4 +34,6 @@ public class PunCategory {
     public static final String ELEVATOR = "elevator";
     public static final String FOOD = "food";
     public static final String SPACE = "space";
+
+    public static final String[] categories = {ANIMAL, BATTERY, COMPUTER, ELEVATOR, FOOD, SPACE};
 }

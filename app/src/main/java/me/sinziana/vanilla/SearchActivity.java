@@ -147,7 +147,6 @@ public class SearchActivity extends AppCompatActivity {
         searchView.setQuery(_query,false);
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 
-
         return super.onCreateOptionsMenu(menu);
     }
 

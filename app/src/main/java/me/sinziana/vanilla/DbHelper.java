@@ -26,7 +26,6 @@ package me.sinziana.vanilla;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -35,7 +34,6 @@ import android.util.Log;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 
 public class DbHelper extends SQLiteOpenHelper {
 
@@ -71,7 +69,7 @@ public class DbHelper extends SQLiteOpenHelper {
                     FAVORITE_COL + " BOOLEAN)");
 
             _database.execSQL("CREATE VIRTUAL TABLE " + FTS_TABLE_NAME +
-                    " USING fts4 (content='" + TABLE_NAME + "', " + PUN_COL + ")");
+                    " USING fts4 (content='" + TABLE_NAME + "', " + PUN_COL + "," + CATEGORY_COL + ")");
         }catch (SQLiteException e) {
             Log.e(LogConst.DATABASE, "Exception: " + e.getMessage());
             throw e;
@@ -97,12 +95,9 @@ public class DbHelper extends SQLiteOpenHelper {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                loadDatabase(PunCategory.ANIMAL);
-                loadDatabase(PunCategory.BATTERY);
-                loadDatabase(PunCategory.COMPUTER);
-                loadDatabase(PunCategory.ELEVATOR);
-                loadDatabase(PunCategory.FOOD);
-                loadDatabase(PunCategory.SPACE);
+                for (int i = 0; i < PunCategory.categories.length; i++) {
+                    loadDatabase(PunCategory.categories[i]);
+                }
                 updateFTSTable();
             }
         }).start();
