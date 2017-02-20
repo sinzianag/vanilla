@@ -61,7 +61,7 @@ public class PunDBHelper {
     public PunDBHelper(Context context) {
         System.out.println("_databaseHelper" + System.currentTimeMillis());
         _databaseHelper = new DatabaseOpenHelper(context);
-        _databaseHelper.getReadableDatabase();
+        _databaseHelper.buildDatabase();
     }
 
     public Cursor query(String db_name, String[] columns, String selection, String[] selectionArgs, String groupBy,

@@ -33,4 +33,6 @@ public final class LogConst {
     public static final String SEARCH = "Search";
     public static final String DISPLAY = "Display";
 
+    public static final String PERFORMANCE = "Performance";
+
 }

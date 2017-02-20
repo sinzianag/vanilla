@@ -88,8 +88,7 @@ public class SearchActivity extends AppCompatActivity {
                 ab.setDisplayHomeAsUpEnabled(true);
             }
 
-            PunStorage database = new PunStorage();
-            database.initialize(this);
+            DbPunStorage database = new DbPunStorage(this);
             Cursor cur = database.searchForPuns(_query);
 
             final ArrayList<String> list = new ArrayList<String>();

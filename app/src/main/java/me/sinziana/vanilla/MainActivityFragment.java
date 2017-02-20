@@ -84,9 +84,7 @@ public class MainActivityFragment extends Fragment {
             }
         });
 
-        PunStorage punStorage = new PunStorage();
-        punStorage.initialize(this.getActivity());
-
+        DbPunStorage punStorage = new DbPunStorage(this.getActivity());
         return mainFragmentView;
     }
 

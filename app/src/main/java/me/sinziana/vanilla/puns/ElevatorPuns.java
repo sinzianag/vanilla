@@ -41,7 +41,7 @@ import me.sinziana.vanilla.R;
 
 public class ElevatorPuns extends Fragment {
 
-    public static String FILE_NAME = "elevator_puns.txt";
+    public static String FILE_NAME = "elevator.txt";
     private View _puns;
     private Iterator<String> _punIterator;
     private TextView _textView;

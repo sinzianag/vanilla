@@ -41,7 +41,7 @@ import me.sinziana.vanilla.R;
 
 public class SpacePuns extends Fragment {
 
-    public static String FILE_NAME = "space_puns.txt";
+    public static String FILE_NAME = "space.txt";
     private View _puns;
     private Iterator<String> _punIterator;
     private TextView _textView;

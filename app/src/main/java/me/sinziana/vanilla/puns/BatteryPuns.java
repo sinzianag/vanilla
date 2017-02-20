@@ -41,7 +41,7 @@ import me.sinziana.vanilla.R;
 
 public class BatteryPuns extends Fragment {
 
-    public static String FILE_NAME = "battery_puns.txt";
+    public static String FILE_NAME = "battery.txt";
     private View _puns;
     private Iterator<String> _punIterator;
     private TextView _textView;

@@ -26,51 +26,49 @@ package me.sinziana.vanilla;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
+import android.database.sqlite.SQLiteQueryBuilder;
+import android.util.Log;
 
+public class DbPunStorage {
 
-class PunStorage {
+    private SQLiteDatabase _db;
 
-    private PunDBHelper _db;
+    public DbPunStorage(Context context) {
+        Log.i(LogConst.PERFORMANCE, "Initialize the database" + System.currentTimeMillis());
 
-    public PunStorage() {
-    }
-
-    public void initialize() {
-    }
-
-    /**
-     * Get all the puns from the DataBase
-     * @return Cursor with puns
-     */
-    public Cursor getPuns() {
-        String COL_PUNS = "puns";
-        String[] columns = {COL_PUNS};
-        return _db.query(PunDBHelper.PUN_TABLE, columns, null, null, null, null, null);
+        // Build the database as soon as we can
+        DbHelper database = new DbHelper(context);
+        _db = database.getReadableDatabase();
     }
 
     public Cursor searchForPuns(String query) {
-        String selection = PunDBHelper.PUN_TABLE + " MATCH ?";
+        String selection = DbHelper.FTS_TABLE_NAME + " MATCH ?";
         String[] selectionArgs = new String[] {query+"*"};
 
-        return _db.query(PunDBHelper.PUN_TABLE, null, selection, selectionArgs, null, null, null);
+        return query(DbHelper.FTS_TABLE_NAME, null, selection, selectionArgs, null, null, null);
     }
 
-    public String getTodaysPun() {
-        String today = PunUtils.getTodayString();
-        Cursor cur = this.searchForPuns(today);
-
-        if (cur != null) {
-            cur.moveToFirst();
-            if (!cur.isAfterLast()) {
-               return cur.getString(0);
-            }
+    public Cursor query(String db_name, String[] columns, String selection, String[] selectionArgs, String groupBy,
+                        String having, String sortOrder) {
+        SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
+        builder.setTables(db_name);
+        Cursor cursor = null;
+        try {
+            cursor = builder.query(_db, columns, selection, selectionArgs, groupBy, having, sortOrder);
+        } catch (SQLiteException e) {
+            Log.e("Database Error", "Bad Query" + e);
         }
 
-        return null;
+        if (cursor == null) {
+            return null;
+        } else if (!cursor.moveToFirst()) {
+            cursor.close();
+            return null;
+        }
+        return cursor;
     }
 
-    public Cursor getCategories() {
-        String[] columns = {PunDBHelper.CAT_NAME};
-        return _db.query(PunDBHelper.CATEGORY_TABLE, columns, null, null, null, null, null);
-    }
+
 }
