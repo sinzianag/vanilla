@@ -48,6 +48,18 @@ public class DbPunStorage {
         return _db.rawQuery("SELECT * FROM " + DbHelper.FTS_TABLE_NAME +" WHERE " + DbHelper.FTS_TABLE_NAME + " MATCH ?", selectionArgs);
     }
 
+    public String getRandomPun() {
+        Cursor cur = _db.rawQuery("SELECT pun FROM "+ DbHelper.TABLE_NAME + " ORDER BY RANDOM() LIMIT 1", null);
+        if (cur != null) {
+            cur.moveToFirst();
+            if (!cur.isAfterLast()) {
+                return cur.getString(0);
+            }
+        }
+
+        return null;
+    }
+
     public Cursor query(String db_name, String[] columns, String selection, String[] selectionArgs, String groupBy,
                         String having, String sortOrder) {
         SQLiteQueryBuilder builder = new SQLiteQueryBuilder();

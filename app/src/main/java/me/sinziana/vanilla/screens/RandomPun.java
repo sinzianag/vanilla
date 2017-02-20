@@ -34,9 +34,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import me.sinziana.vanilla.DbHelper;
+import me.sinziana.vanilla.DbPunStorage;
 import me.sinziana.vanilla.R;
 
 public class RandomPun extends Fragment {
+
+    private DbPunStorage _db;
 
     public RandomPun() {
     }
@@ -62,16 +66,24 @@ public class RandomPun extends Fragment {
 
         View _potd = inflater.inflate(R.layout.random_puns, container, false);
 
-        TextView _textView = (TextView) _potd.findViewById(R.id.pun);
+        final TextView _textView = (TextView) _potd.findViewById(R.id.pun);
         Button _moreButton = (Button) _potd.findViewById(R.id.more);
 
-        //PunDBHelper pd = new PunDBHelper(this.getContext());
+        _db = new DbPunStorage(this.getActivity());
 
-        //_textView.setText(pd.getFirstEntry());
+        String pun = _db.getRandomPun();
+
+        if (pun != null) {
+            _textView.setText(pun);
+        }
 
         _moreButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // TODO
+                String pun = _db.getRandomPun();
+
+                if (pun != null) {
+                    _textView.setText(pun);
+                }
             }
         });
 

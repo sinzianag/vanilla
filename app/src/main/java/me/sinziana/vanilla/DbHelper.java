@@ -40,7 +40,7 @@ public class DbHelper extends SQLiteOpenHelper {
     // Constants
     private static final String DATABASE_NAME = "punDB";
     private static final int DATABASE_VERSION = 1;
-    private static final String TABLE_NAME = "puns";
+    public static final String TABLE_NAME = "puns";
     public static final String FTS_TABLE_NAME = "fts_puns";
 
     private static final String PUN_COL = "pun";
