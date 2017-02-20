@@ -100,7 +100,6 @@ public class SearchActivity extends AppCompatActivity {
                     cur.moveToNext();
                 }
             }
-            Log.e(LogConst.DATABASE, "result: " + list.toString());
 
             final ListView listview = (ListView) findViewById(R.id.listview);
             final StableArrayAdapter adapter = new StableArrayAdapter(this, R.layout.pun_result, list);
@@ -162,7 +161,6 @@ public class SearchActivity extends AppCompatActivity {
         public StableArrayAdapter(Context context, int textViewResourceId,
                                   List<String> objects) {
             super(context, textViewResourceId, objects);
-            Log.e(LogConst.DATABASE, "result 2: " + objects.toString());
             for (int i = 0; i < objects.size(); i++) {
                 mIdMap.put(objects.get(i), i);
             }
@@ -182,22 +180,4 @@ public class SearchActivity extends AppCompatActivity {
     }
 
 }
-
-//            RequestQueue queue = Volley.newRequestQueue(this);
-//            // this is for the emulator ( Change to 127.0.0.1 )
-//            String url ="http://10.0.2.2:8080/" + query;
-//
-//            StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-//                    new Response.Listener<String>() {
-//                        @Override
-//                        public void onResponse(String response) {
-//                            _textView.setText(response);
-//                        }
-//                    }, new Response.ErrorListener() {
-//                @Override
-//                public void onErrorResponse(VolleyError error) {
-//                    _textView.setText("That didn't work! " + error.getMessage());
-//                }
-//            });
-//            queue.add(stringRequest);
 
