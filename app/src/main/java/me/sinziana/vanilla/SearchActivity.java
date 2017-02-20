@@ -33,6 +33,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -95,10 +96,11 @@ public class SearchActivity extends AppCompatActivity {
             if (cur != null) {
                 cur.moveToFirst();
                 while (!cur.isAfterLast()) {
-                    list.add(cur.getString(1));
+                    list.add(cur.getString(0));
                     cur.moveToNext();
                 }
             }
+            Log.e(LogConst.DATABASE, "result: " + list.toString());
 
             final ListView listview = (ListView) findViewById(R.id.listview);
             final StableArrayAdapter adapter = new StableArrayAdapter(this, R.layout.pun_result, list);
@@ -160,7 +162,8 @@ public class SearchActivity extends AppCompatActivity {
         public StableArrayAdapter(Context context, int textViewResourceId,
                                   List<String> objects) {
             super(context, textViewResourceId, objects);
-            for (int i = 0; i < objects.size(); ++i) {
+            Log.e(LogConst.DATABASE, "result 2: " + objects.toString());
+            for (int i = 0; i < objects.size(); i++) {
                 mIdMap.put(objects.get(i), i);
             }
         }

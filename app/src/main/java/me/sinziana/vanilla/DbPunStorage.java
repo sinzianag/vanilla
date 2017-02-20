@@ -44,10 +44,8 @@ public class DbPunStorage {
     }
 
     public Cursor searchForPuns(String query) {
-        String selection = DbHelper.FTS_TABLE_NAME + " MATCH ?";
-        String[] selectionArgs = new String[] {query+"*"};
-
-        return query(DbHelper.FTS_TABLE_NAME, null, selection, selectionArgs, null, null, null);
+        String[] selectionArgs = new String[] {query};
+        return _db.rawQuery("SELECT * FROM " + DbHelper.FTS_TABLE_NAME +" WHERE " + DbHelper.FTS_TABLE_NAME + " MATCH ?", selectionArgs);
     }
 
     public Cursor query(String db_name, String[] columns, String selection, String[] selectionArgs, String groupBy,

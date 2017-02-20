@@ -26,13 +26,16 @@ package me.sinziana.vanilla;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class DbHelper extends SQLiteOpenHelper {
 
@@ -59,15 +62,20 @@ public class DbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         _database = db;
-        _database.execSQL("CREATE TABLE " + TABLE_NAME +
-                " (_id INTEGER PRIMARY KEY, " +
-                PUN_COL +" TEXT," +
-                CATEGORY_COL +" TEXT," +
-                DAY_COL +" DATE," +
-                FAVORITE_COL +" BOOLEAN)");
+        try {
+            _database.execSQL("CREATE TABLE " + TABLE_NAME +
+                    " (_id INTEGER PRIMARY KEY, " +
+                    PUN_COL + " TEXT," +
+                    CATEGORY_COL + " TEXT," +
+                    DAY_COL + " DATE," +
+                    FAVORITE_COL + " BOOLEAN)");
 
-        _database.execSQL("CREATE VIRTUAL TABLE " + FTS_TABLE_NAME +
-                " USING fts4 (content='" + TABLE_NAME + "', " + PUN_COL + ")");
+            _database.execSQL("CREATE VIRTUAL TABLE " + FTS_TABLE_NAME +
+                    " USING fts4 (content='" + TABLE_NAME + "', " + PUN_COL + ")");
+        }catch (SQLiteException e) {
+            Log.e(LogConst.DATABASE, "Exception: " + e.getMessage());
+            throw e;
+        }
 
         populateDatabase();
 
@@ -98,6 +106,15 @@ public class DbHelper extends SQLiteOpenHelper {
                 updateFTSTable();
             }
         }).start();
+    }
+
+    private void updateFTSTable(){
+        try {
+            _database.execSQL("INSERT INTO " + FTS_TABLE_NAME + "(" + FTS_TABLE_NAME + ") VALUES('rebuild')");
+        } catch (SQLiteException e) {
+            Log.e(LogConst.DATABASE, "Exception: " + e.getMessage());
+            throw e;
+        }
     }
 
     private void loadDatabase(String punCategory) {
@@ -133,7 +150,5 @@ public class DbHelper extends SQLiteOpenHelper {
         _database.insert(TABLE_NAME, null, initialValues);
     }
 
-    private void updateFTSTable(){
-        _database.execSQL("INSERT INTO " + FTS_TABLE_NAME +"(docid, " + PUN_COL + ") SELECT _id, " + PUN_COL  + " FROM "+ TABLE_NAME );
-    }
+
 }
