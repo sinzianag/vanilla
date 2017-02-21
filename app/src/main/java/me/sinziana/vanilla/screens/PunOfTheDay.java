@@ -36,15 +36,20 @@ import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.TimeoutException;
 
 import me.sinziana.vanilla.DbPunStorage;
+import me.sinziana.vanilla.PunUtils;
 import me.sinziana.vanilla.R;
 
 public class PunOfTheDay extends Fragment {
 
-   public PunOfTheDay() {
+    private int _punOffset;
+    private TextView _pun;
+    private TextView _date;
 
-   }
+    private Button _olderButton;
+    private Button _newerButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,24 +70,80 @@ public class PunOfTheDay extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        _punOffset = 0;
+
         View _potd = inflater.inflate(R.layout.pun_of_the_day, container, false);
 
-        TextView _textView = (TextView) _potd.findViewById(R.id.pun);
-        TextView _date = (TextView) _potd.findViewById(R.id.date);
-        _date.setText(new SimpleDateFormat("MM - dd - yyyy").format(new Date()));
-        Button _olderButton = (Button) _potd.findViewById(R.id.older);
-        Button _newerButton = (Button) _potd.findViewById(R.id.newer);
+        _pun = (TextView) _potd.findViewById(R.id.pun);
 
-        DbPunStorage db = new DbPunStorage(this.getActivity());
-        _textView.setText(db.getPunOfTheDay());
+        _date = (TextView) _potd.findViewById(R.id.date);
+
+
+        _olderButton = (Button) _potd.findViewById(R.id.older);
+        _newerButton = (Button) _potd.findViewById(R.id.newer);
+
 
         _olderButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // TODO
+                updateWithOlderPun();
             }
         });
 
+        _newerButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                updateWithNewerPun();
+            }
+        });
+
+        updateUI();
+
         return _potd;
+    }
+
+    private void updateUI() {
+        setCurrentPun();
+        setCurrentDate();
+        updateButtonVisibility();
+    }
+
+    private void updateWithOlderPun() {
+        _punOffset--;
+        updateUI();
+    }
+
+    private void updateWithNewerPun() {
+        _punOffset++;
+        updateUI();
+    }
+
+    private void updateButtonVisibility() {
+        if (PunUtils.daysSinceLaunch() == 0 ) {
+            _olderButton.setEnabled(false);
+        } else {
+            _olderButton.setEnabled(true);
+        }
+
+        if (_punOffset == 0) {
+            _newerButton.setEnabled(false);
+        } else {
+            _newerButton.setEnabled(true);
+        }
+    }
+
+    private void setCurrentPun() {
+        if (_punOffset == 0) {
+            DbPunStorage db = new DbPunStorage(this.getActivity());
+            _pun.setText(db.getPunOfTheDay());
+        }
+
+    }
+
+    private void setCurrentDate() {
+        if (_punOffset == 0) {
+            _date.setText(new SimpleDateFormat("mm - dd - yyyy").format(new Date()));
+        } else {
+            //PunUtils.getDateWithOffset();
+        }
     }
 
 }

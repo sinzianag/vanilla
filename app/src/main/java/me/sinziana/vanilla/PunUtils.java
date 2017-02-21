@@ -80,4 +80,9 @@ public class PunUtils {
     public static String getTodayString() {
         return new SimpleDateFormat(DATE_FORMAT).format(new Date());
     }
+
+    public String getDateWithOffset() {
+        // TODO
+        return null;
+    }
 }

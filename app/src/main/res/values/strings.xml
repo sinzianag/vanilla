@@ -27,4 +27,7 @@
 
     <string name="favorites">Favorite Puns</string>
 
+    <string name="older">Older</string>
+    <string name="newer">Newer</string>
+
 </resources>

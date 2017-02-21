@@ -36,14 +36,14 @@
         android:layout_alignParentBottom="true">
 
         <Button
-            android:text="Older"
+            android:text="@string/older"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_weight="0.5"
             android:id="@+id/older"/>
 
         <Button
-            android:text="Newer"
+            android:text="@string/newer"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:id="@+id/newer"
