@@ -41,8 +41,7 @@ import me.sinziana.vanilla.R;
 
 public class BatteryPuns extends Fragment {
 
-    public static String FILE_NAME = "battery.txt";
-    private View _puns;
+    private static String FILE_NAME = "battery.txt";
     private Iterator<String> _punIterator;
     private TextView _textView;
     private Button _moreButton;
@@ -65,7 +64,7 @@ public class BatteryPuns extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        _puns = inflater.inflate(R.layout.battery_puns, container, false);
+        View _puns = inflater.inflate(R.layout.battery_puns, container, false);
         _textView = (TextView) _puns.findViewById(R.id.pun);
         _moreButton = (Button) _puns.findViewById(R.id.more);
 

@@ -55,11 +55,10 @@ public class PunCategories extends Fragment{
         }
     }
 
+    @SuppressWarnings("UnnecessaryLocalVariable")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View _potd = inflater.inflate(R.layout.pun_categories, container, false);
-
-        return _potd;
+        return inflater.inflate(R.layout.pun_categories, container, false);
     }
 }

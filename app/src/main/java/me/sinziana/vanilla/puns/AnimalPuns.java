@@ -41,7 +41,7 @@ import me.sinziana.vanilla.R;
 
 public class AnimalPuns extends Fragment {
 
-    public static final String FILE_NAME = "animal.txt";
+    private static final String FILE_NAME = "animal.txt";
 
     private Iterator<String> _punIterator;
     private TextView _textView;

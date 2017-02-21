@@ -32,10 +32,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import me.sinziana.vanilla.puns.AnimalPuns;
-import me.sinziana.vanilla.puns.BatteryPuns;
-import me.sinziana.vanilla.puns.ElevatorPuns;
-import me.sinziana.vanilla.puns.SpacePuns;
 import me.sinziana.vanilla.screens.FavoritePuns;
 import me.sinziana.vanilla.screens.PunCategories;
 import me.sinziana.vanilla.screens.PunOfTheDay;

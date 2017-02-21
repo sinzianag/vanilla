@@ -41,7 +41,7 @@ import me.sinziana.vanilla.R;
 
 public class ComputerPuns extends Fragment {
 
-    public static final String FILE_NAME = "computer.txt";
+    private static final String FILE_NAME = "computer.txt";
     private Iterator<String> _punIterator;
     private TextView _textView;
     private Button _moreButton;

@@ -58,9 +58,7 @@ public class FavoritePuns extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View _potd = inflater.inflate(R.layout.favorites, container, false);
-
-        return _potd;
+        return inflater.inflate(R.layout.favorites, container, false);
     }
 
 

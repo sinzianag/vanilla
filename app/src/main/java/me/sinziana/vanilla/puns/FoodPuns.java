@@ -41,7 +41,7 @@ import me.sinziana.vanilla.R;
 
 public class FoodPuns extends Fragment {
 
-    public static final String FILE_NAME = "food.txt";
+    private static final String FILE_NAME = "food.txt";
     private Iterator<String> _punIterator;
     private TextView _textView;
     private Button _moreButton;

@@ -34,7 +34,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import me.sinziana.vanilla.DbHelper;
 import me.sinziana.vanilla.DbPunStorage;
 import me.sinziana.vanilla.R;
 

@@ -24,7 +24,6 @@
 
 package me.sinziana.vanilla;
 
-import android.content.Context;
 import android.database.Cursor;
 
 
@@ -46,7 +45,7 @@ class PunStorage {
         return null; //_db.query(PunDBHelper.PUN_TABLE, columns, null, null, null, null, null);
     }
 
-    public Cursor searchForPuns(String query) {
+    private Cursor searchForPuns(String query) {
         //String selection = PunDBHelper.PUN_TABLE + " MATCH ?";
         String[] selectionArgs = new String[] {query+"*"};
 

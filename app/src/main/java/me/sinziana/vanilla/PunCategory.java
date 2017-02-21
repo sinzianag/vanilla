@@ -28,12 +28,12 @@ public class PunCategory {
 
     public static final int TOTAL = 6;
 
-    public static final String ANIMAL = "animal";
-    public static final String BATTERY = "battery";
-    public static final String COMPUTER = "computer";
-    public static final String ELEVATOR = "elevator";
-    public static final String FOOD = "food";
-    public static final String SPACE = "space";
+    private static final String ANIMAL = "animal";
+    private static final String BATTERY = "battery";
+    private static final String COMPUTER = "computer";
+    private static final String ELEVATOR = "elevator";
+    private static final String FOOD = "food";
+    private static final String SPACE = "space";
 
     public static final String[] categories = {ANIMAL, BATTERY, COMPUTER, ELEVATOR, FOOD, SPACE};
 }
