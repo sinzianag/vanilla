@@ -70,13 +70,13 @@ public class PunOfTheDay extends Fragment {
         TextView _textView = (TextView) _potd.findViewById(R.id.pun);
         TextView _date = (TextView) _potd.findViewById(R.id.date);
         _date.setText(new SimpleDateFormat("MM - dd - yyyy").format(new Date()));
-        Button _moreButton = (Button) _potd.findViewById(R.id.more);
+        Button _olderButton = (Button) _potd.findViewById(R.id.older);
+        Button _newerButton = (Button) _potd.findViewById(R.id.newer);
 
         DbPunStorage db = new DbPunStorage(this.getActivity());
-
         _textView.setText(db.getPunOfTheDay());
 
-        _moreButton.setOnClickListener(new View.OnClickListener() {
+        _olderButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO
             }
