@@ -32,6 +32,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -56,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
             getFragmentManager().beginTransaction()
                     .add(R.id.fragment_container, firstFragment).commit();
         }
+
+        Log.e(LogConst.PERFORMANCE, "Days until March 1: " + PunUtils.daysSinceLaunch());
 
         handleBackStack();
     }

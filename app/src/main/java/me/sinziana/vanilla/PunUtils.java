@@ -29,7 +29,9 @@ import android.util.Log;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Utilities class for the Puns app.
@@ -43,6 +45,8 @@ public class PunUtils {
      */
     private static final String DATE_FORMAT = "mm/dd/yyyy";
 
+    private static final long launchTimestamp = 1487642138L; // March 1st, 2017
+
     /**
      * Check if the date we're passing is today
      * Date format must be "mm/dd/yyyy"
@@ -54,12 +58,18 @@ public class PunUtils {
         try {
             SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
             Date date = sdf.parse(dateString);
+
             return DateUtils.isToday(date.getTime());
         } catch (ParseException e) {
             Log.e("ParseException", "Could not get the date from the passed String: " + dateString);
         }
 
         return false;
+    }
+
+    public static int daysSinceLaunch() {
+        long diff = (Calendar.getInstance().getTimeInMillis()/1000) - launchTimestamp;
+        return Math.round(((diff/60)/60)/24);
     }
 
     /**

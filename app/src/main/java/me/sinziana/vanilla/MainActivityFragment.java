@@ -91,8 +91,6 @@ public class MainActivityFragment extends Fragment {
     }
 
     private void goToFragment(Fragment newFragment) {
-
-            System.out.println("Button Pressed");
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
             transaction.replace(R.id.fragment_container, newFragment);
             transaction.addToBackStack(null);

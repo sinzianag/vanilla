@@ -62,6 +62,20 @@ public class DbPunStorage {
         return null;
     }
 
+    public String getPunOfTheDay() {
+        Cursor cur = _db.rawQuery("SELECT pun FROM "+ DbHelper.TABLE_NAME + " WHERE " + DbHelper.DAY_COL + "=" + PunUtils.daysSinceLaunch(), null);
+        if (cur != null) {
+            cur.moveToFirst();
+            if (!cur.isAfterLast()) {
+                String potd = cur.getString(0);
+                cur.close();
+                return potd;
+            }
+        }
+
+        return null;
+    }
+
     public Cursor query(String db_name, String[] columns, String selection, String[] selectionArgs, String groupBy,
                         String having, String sortOrder) {
         SQLiteQueryBuilder builder = new SQLiteQueryBuilder();

@@ -45,8 +45,10 @@ class DbHelper extends SQLiteOpenHelper {
 
     private static final String PUN_COL = "pun";
     private static final String CATEGORY_COL = "category";
-    private static final String DAY_COL = "punOfTheDay";
+    public static final String DAY_COL = "punOfTheDay";
     private static final String FAVORITE_COL = "favorite";
+
+    private int _dayOrder = 0;
 
     // private variables
     private SQLiteDatabase _database;
@@ -65,7 +67,7 @@ class DbHelper extends SQLiteOpenHelper {
                     " (_id INTEGER PRIMARY KEY, " +
                     PUN_COL + " TEXT," +
                     CATEGORY_COL + " TEXT," +
-                    DAY_COL + " DATE," +
+                    DAY_COL + " NUMBER," +
                     FAVORITE_COL + " BOOLEAN)");
 
             _database.execSQL("CREATE VIRTUAL TABLE " + FTS_TABLE_NAME +
@@ -139,9 +141,9 @@ class DbHelper extends SQLiteOpenHelper {
         ContentValues initialValues = new ContentValues();
         initialValues.put(CATEGORY_COL, category);
         initialValues.put(PUN_COL, pun);
-        initialValues.put(DAY_COL, PunUtils.getTodayString());
+        initialValues.put(DAY_COL, _dayOrder);
         initialValues.put(FAVORITE_COL, Boolean.FALSE);
-
+        _dayOrder++;
         _database.insert(TABLE_NAME, null, initialValues);
     }
 
