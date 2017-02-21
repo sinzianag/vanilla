@@ -53,7 +53,9 @@ public class DbPunStorage {
         if (cur != null) {
             cur.moveToFirst();
             if (!cur.isAfterLast()) {
-                return cur.getString(0);
+                String randomPun = cur.getString(0);
+                cur.close();
+                return randomPun;
             }
         }
 
