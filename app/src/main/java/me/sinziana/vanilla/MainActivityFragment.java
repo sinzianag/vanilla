@@ -93,6 +93,7 @@ public class MainActivityFragment extends Fragment {
     private void goToFragment(Fragment newFragment) {
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
             transaction.replace(R.id.fragment_container, newFragment);
+            //TODO Don't pass null
             transaction.addToBackStack(null);
             transaction.commit();
     }

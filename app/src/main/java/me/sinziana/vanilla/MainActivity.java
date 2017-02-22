@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
+        // TODO - clarify
         if (findViewById(R.id.fragment_container) != null) {
 
             if (savedInstanceState != null) {

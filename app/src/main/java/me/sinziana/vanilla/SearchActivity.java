@@ -83,7 +83,7 @@ public class SearchActivity extends AppCompatActivity {
             _query = intent.getStringExtra(SearchManager.QUERY);
             ActionBar ab = getSupportActionBar();
             if (ab != null) {
-                ab.setTitle(null);
+                ab.setTitle(null); //TODO Don't set null
                 ab.setDisplayHomeAsUpEnabled(true);
             }
 

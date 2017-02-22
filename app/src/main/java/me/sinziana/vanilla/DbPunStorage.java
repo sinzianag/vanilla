@@ -58,7 +58,7 @@ public class DbPunStorage {
                 return randomPun;
             }
         }
-
+        //TODO Don't return null
         return null;
     }
 
@@ -73,6 +73,7 @@ public class DbPunStorage {
             }
         }
 
+        //TODO Don't return null
         return null;
     }
 
@@ -88,9 +89,11 @@ public class DbPunStorage {
         }
 
         if (cursor == null) {
+            //TODO Don't return null
             return null;
         } else if (!cursor.moveToFirst()) {
             cursor.close();
+            //TODO Don't return null
             return null;
         }
         return cursor;

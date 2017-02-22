@@ -72,6 +72,7 @@ public class RandomPun extends Fragment {
 
         String pun = _db.getRandomPun();
 
+        // TODO simplify
         if (pun != null) {
             _textView.setText(pun);
         }
