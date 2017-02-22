@@ -80,9 +80,7 @@ public class PunUtils {
         return new SimpleDateFormat(DATE_FORMAT).format(new Date());
     }
 
-    public String getDateWithOffset() {
-        // TODO
-        //TODO Don't return null
-        return null;
+    public static Date getDateWithOffset(int offset) {
+        return new Date(Calendar.getInstance().getTimeInMillis() + offset*60*60*24*1000);
     }
 }

@@ -135,19 +135,12 @@ public class PunOfTheDay extends Fragment {
     }
 
     private void setCurrentPun() {
-        if (_punOffset == 0) {
             DbPunStorage db = new DbPunStorage(this.getActivity());
-            _pun.setText(db.getPunOfTheDay());
-        }
-
+            _pun.setText(db.getPunForDayIndex(PunUtils.daysSinceLaunch() +_punOffset));
     }
 
     private void setCurrentDate() {
-        if (_punOffset == 0) {
-            _date.setText(new SimpleDateFormat("MM - dd - yyyy").format(new Date()));
-        } else {
-            //PunUtils.getDateWithOffset();
-        }
+        _date.setText(new SimpleDateFormat("MM - dd - yyyy").format(PunUtils.getDateWithOffset(_punOffset)));
     }
 
 }

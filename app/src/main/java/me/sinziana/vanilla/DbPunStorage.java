@@ -59,23 +59,25 @@ public class DbPunStorage {
                 cur.close();
             }
         }
-        
+
         return randomPun;
     }
 
     public String getPunOfTheDay() {
-        Cursor cur = _db.rawQuery("SELECT pun FROM "+ DbHelper.TABLE_NAME + " WHERE " + DbHelper.DAY_COL + "=" + PunUtils.daysSinceLaunch(), null);
+        return getPunForDayIndex(PunUtils.daysSinceLaunch());
+    }
+
+    public String getPunForDayIndex(int dayIndex) {
+        String potd = "";
+        Cursor cur = _db.rawQuery("SELECT pun FROM "+ DbHelper.TABLE_NAME + " WHERE " + DbHelper.DAY_COL + "=" + dayIndex, null);
         if (cur != null) {
             cur.moveToFirst();
             if (!cur.isAfterLast()) {
-                String potd = cur.getString(0);
+                potd = cur.getString(0);
                 cur.close();
-                return potd;
             }
         }
-
-        //TODO Don't return null
-        return null;
+        return potd;
     }
 
     public Cursor query(String db_name, String[] columns, String selection, String[] selectionArgs, String groupBy,
