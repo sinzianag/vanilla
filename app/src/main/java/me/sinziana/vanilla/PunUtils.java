@@ -31,7 +31,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Utilities class for the Puns app.
@@ -45,7 +44,7 @@ public class PunUtils {
      */
     private static final String DATE_FORMAT = "mm/dd/yyyy";
 
-    private static final long launchTimestamp = 1487642138L; // March 1st, 2017
+    private static final long launchTimestamp = 1487548800L; // March 1st, 2017
 
     /**
      * Check if the date we're passing is today

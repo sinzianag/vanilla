@@ -107,17 +107,21 @@ public class PunOfTheDay extends Fragment {
     }
 
     private void updateWithOlderPun() {
-        _punOffset--;
-        updateUI();
+        if((PunUtils.daysSinceLaunch() + _punOffset) > 0) {
+            _punOffset--;
+            updateUI();
+        }
     }
 
     private void updateWithNewerPun() {
-        _punOffset++;
-        updateUI();
+        if (_punOffset < 0) {
+            _punOffset++;
+            updateUI();
+        }
     }
 
     private void updateButtonVisibility() {
-        if (PunUtils.daysSinceLaunch() == 0 ) {
+        if ((PunUtils.daysSinceLaunch() + _punOffset) <= 0) {
             _olderButton.setEnabled(false);
         } else {
             _olderButton.setEnabled(true);
@@ -140,7 +144,7 @@ public class PunOfTheDay extends Fragment {
 
     private void setCurrentDate() {
         if (_punOffset == 0) {
-            _date.setText(new SimpleDateFormat("mm - dd - yyyy").format(new Date()));
+            _date.setText(new SimpleDateFormat("MM - dd - yyyy").format(new Date()));
         } else {
             //PunUtils.getDateWithOffset();
         }
