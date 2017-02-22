@@ -49,17 +49,18 @@ public class DbPunStorage {
     }
 
     public String getRandomPun() {
+        String randomPun = "";
         Cursor cur = _db.rawQuery("SELECT pun FROM "+ DbHelper.TABLE_NAME + " ORDER BY RANDOM() LIMIT 1", null);
+
         if (cur != null) {
             cur.moveToFirst();
             if (!cur.isAfterLast()) {
-                String randomPun = cur.getString(0);
+                randomPun = cur.getString(0);
                 cur.close();
-                return randomPun;
             }
         }
-        //TODO Don't return null
-        return null;
+        
+        return randomPun;
     }
 
     public String getPunOfTheDay() {

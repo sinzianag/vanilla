@@ -40,6 +40,7 @@ import me.sinziana.vanilla.R;
 public class RandomPun extends Fragment {
 
     private DbPunStorage _db;
+    TextView _punView;
 
     public RandomPun() {
     }
@@ -64,29 +65,23 @@ public class RandomPun extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View _potd = inflater.inflate(R.layout.random_puns, container, false);
-
-        final TextView _textView = (TextView) _potd.findViewById(R.id.pun);
-        Button _moreButton = (Button) _potd.findViewById(R.id.more);
+        _punView = (TextView) _potd.findViewById(R.id.pun);
 
         _db = new DbPunStorage(this.getActivity());
 
-        String pun = _db.getRandomPun();
+        setRandomPun();
 
-        // TODO simplify
-        if (pun != null) {
-            _textView.setText(pun);
-        }
-
-        _moreButton.setOnClickListener(new View.OnClickListener() {
+        Button moreButton = (Button) _potd.findViewById(R.id.more);
+        moreButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                String pun = _db.getRandomPun();
-
-                if (pun != null) {
-                    _textView.setText(pun);
-                }
+                setRandomPun();
             }
         });
 
         return _potd;
+    }
+
+    private void setRandomPun() {
+        _punView.setText(_db.getRandomPun());
     }
 }
