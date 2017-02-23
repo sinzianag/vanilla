@@ -51,9 +51,14 @@ public class PunOfTheDay extends Fragment {
     private Button _olderButton;
     private Button _newerButton;
 
+    private final String DAY_OFFSET_KEY = "dayOffset";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (savedInstanceState != null) {
+            _dayOffset = savedInstanceState.getInt(DAY_OFFSET_KEY);
+        }
     }
 
     @Override
@@ -68,14 +73,23 @@ public class PunOfTheDay extends Fragment {
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putInt(DAY_OFFSET_KEY, _dayOffset);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        _dayOffset = 0;
+        if (savedInstanceState != null) {
+            _dayOffset = savedInstanceState.getInt(DAY_OFFSET_KEY);
+        } else {
+            _dayOffset = 0;
+        }
 
         View _potd = inflater.inflate(R.layout.pun_of_the_day, container, false);
 
         _pun = (TextView) _potd.findViewById(R.id.pun);
-
         _date = (TextView) _potd.findViewById(R.id.date);
 
 
