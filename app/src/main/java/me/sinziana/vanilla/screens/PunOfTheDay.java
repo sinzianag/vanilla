@@ -44,7 +44,7 @@ import me.sinziana.vanilla.R;
 
 public class PunOfTheDay extends Fragment {
 
-    private int _punOffset;
+    private int _dayOffset;
     private TextView _pun;
     private TextView _date;
 
@@ -70,7 +70,7 @@ public class PunOfTheDay extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        _punOffset = 0;
+        _dayOffset = 0;
 
         View _potd = inflater.inflate(R.layout.pun_of_the_day, container, false);
 
@@ -107,27 +107,27 @@ public class PunOfTheDay extends Fragment {
     }
 
     private void updateWithOlderPun() {
-        if((PunUtils.daysSinceLaunch() + _punOffset) > 0) {
-            _punOffset--;
+        if((PunUtils.daysSinceLaunch() + _dayOffset) > 0) {
+            _dayOffset--;
             updateUI();
         }
     }
 
     private void updateWithNewerPun() {
-        if (_punOffset < 0) {
-            _punOffset++;
+        if (_dayOffset < 0) {
+            _dayOffset++;
             updateUI();
         }
     }
 
     private void updateButtonVisibility() {
-        if ((PunUtils.daysSinceLaunch() + _punOffset) <= 0) {
+        if ((PunUtils.daysSinceLaunch() + _dayOffset) <= 0) {
             _olderButton.setEnabled(false);
         } else {
             _olderButton.setEnabled(true);
         }
 
-        if (_punOffset == 0) {
+        if (_dayOffset == 0) {
             _newerButton.setEnabled(false);
         } else {
             _newerButton.setEnabled(true);
@@ -136,11 +136,11 @@ public class PunOfTheDay extends Fragment {
 
     private void setCurrentPun() {
             DbPunStorage db = new DbPunStorage(this.getActivity());
-            _pun.setText(db.getPunForDayIndex(PunUtils.daysSinceLaunch() +_punOffset));
+            _pun.setText(db.getPunForDayIndex(PunUtils.daysSinceLaunch() +_dayOffset));
     }
 
     private void setCurrentDate() {
-        _date.setText(new SimpleDateFormat("MM - dd - yyyy").format(PunUtils.getDateWithOffset(_punOffset)));
+        _date.setText(new SimpleDateFormat("MM - dd - yyyy").format(PunUtils.getDateWithOffset(_dayOffset)));
     }
 
 }
