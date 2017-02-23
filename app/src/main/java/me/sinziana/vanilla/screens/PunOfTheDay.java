@@ -56,9 +56,6 @@ public class PunOfTheDay extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (savedInstanceState != null) {
-            _dayOffset = savedInstanceState.getInt(DAY_OFFSET_KEY);
-        }
     }
 
     @Override
@@ -88,14 +85,10 @@ public class PunOfTheDay extends Fragment {
         }
 
         View _potd = inflater.inflate(R.layout.pun_of_the_day, container, false);
-
         _pun = (TextView) _potd.findViewById(R.id.pun);
         _date = (TextView) _potd.findViewById(R.id.date);
-
-
         _olderButton = (Button) _potd.findViewById(R.id.older);
         _newerButton = (Button) _potd.findViewById(R.id.newer);
-
 
         _olderButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -149,8 +142,8 @@ public class PunOfTheDay extends Fragment {
     }
 
     private void setCurrentPun() {
-            DbPunStorage db = new DbPunStorage(this.getActivity());
-            _pun.setText(db.getPunForDayIndex(PunUtils.daysSinceLaunch() +_dayOffset));
+        DbPunStorage db = new DbPunStorage(this.getActivity());
+        _pun.setText(db.getPunForDayIndex(PunUtils.daysSinceLaunch() +_dayOffset));
     }
 
     private void setCurrentDate() {
