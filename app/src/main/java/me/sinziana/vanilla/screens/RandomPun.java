@@ -44,11 +44,6 @@ public class RandomPun extends Fragment {
     private final String PUN_KEY = "punKey";
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public void onStart() {
         super.onStart();
         ActionBar ab = ((AppCompatActivity)getActivity()).getSupportActionBar();

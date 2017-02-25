@@ -24,9 +24,7 @@
 
 package me.sinziana.vanilla;
 
-public class PunCategory {
-
-    public static final int TOTAL = 6;
+class PunCategory {
 
     private static final String ANIMAL = "animal";
     private static final String BATTERY = "battery";

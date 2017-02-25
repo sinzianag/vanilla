@@ -35,8 +35,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.concurrent.TimeoutException;
 
 import me.sinziana.vanilla.DbPunStorage;
 import me.sinziana.vanilla.PunUtils;
@@ -52,11 +50,6 @@ public class PunOfTheDay extends Fragment {
     private Button _newerButton;
 
     private final String DAY_OFFSET_KEY = "dayOffset";
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     public void onStart() {
