@@ -34,12 +34,15 @@ import java.util.Date;
 
 public class PunUtils {
 
+    public static long SECONDS_IN_DAY = 60*60*24;
+    public static long MILI_IN_SEC = 1000;
+
     public static int daysSinceLaunch(long launchTimestamp) {
-        long diff = (Calendar.getInstance().getTimeInMillis()/1000) - launchTimestamp;
-        return Math.round(((diff/60)/60)/24);
+        long diff = (Calendar.getInstance().getTimeInMillis()/MILI_IN_SEC) - launchTimestamp;
+        return Math.round(diff/SECONDS_IN_DAY);
     }
 
     public static Date getDateWithOffset(int offset) {
-        return new Date(Calendar.getInstance().getTimeInMillis() + offset*60*60*24*1000);
+        return new Date(Calendar.getInstance().getTimeInMillis() + offset * SECONDS_IN_DAY * MILI_IN_SEC);
     }
 }

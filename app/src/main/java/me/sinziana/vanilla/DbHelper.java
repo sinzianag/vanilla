@@ -35,6 +35,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import me.sinziana.vanilla.screens.PunCategories;
+
 class DbHelper extends SQLiteOpenHelper {
 
     // Constants
@@ -97,8 +99,8 @@ class DbHelper extends SQLiteOpenHelper {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                for (int i = 0; i < PunCategory.categories.length; i++) {
-                    loadDatabase(PunCategory.categories[i]);
+                for (int i = 0; i < PunCategories.PunCategory.categories.length; i++) {
+                    loadDatabase(PunCategories.PunCategory.categories[i]);
                 }
                 updateFTSTable();
             }

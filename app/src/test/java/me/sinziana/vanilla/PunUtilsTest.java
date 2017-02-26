@@ -33,24 +33,27 @@ import static org.junit.Assert.*;
 
 public class PunUtilsTest {
 
+    private final static int MILIS_IN_SEC = 1000;
+    private final static int SEC_IN_DAY = 60*60*24;
+
     @Test
     public void daysSinceLaunch_current() throws Exception {
-        long current = (Calendar.getInstance().getTimeInMillis()/1000);
+        long current = (Calendar.getInstance().getTimeInMillis()/MILIS_IN_SEC);
         assertEquals("With no offset we should the getting a value of 0", 0, PunUtils.daysSinceLaunch(current));
     }
 
     @Test
     public void daysSinceLaunch_2days() throws Exception {
-        long days2 = 2*60*60*24;
-        long current = (Calendar.getInstance().getTimeInMillis()/1000);
+        long days2 = 2*SEC_IN_DAY;
+        long current = (Calendar.getInstance().getTimeInMillis()/MILIS_IN_SEC);
         assertEquals("The returned calculated offset since the date of launch does not match the expected value",
                 2, PunUtils.daysSinceLaunch(current - days2));
     }
 
     @Test
     public void daysSinceLaunch_2days_future() throws Exception {
-        long days2 = 2*60*60*24;
-        long current = (Calendar.getInstance().getTimeInMillis()/1000);
+        long days2 = 2*SEC_IN_DAY;
+        long current = (Calendar.getInstance().getTimeInMillis()/MILIS_IN_SEC);
         assertEquals("The method should return a negative number for days that are in the future",
                 -2, PunUtils.daysSinceLaunch(current + days2));
     }
@@ -58,15 +61,15 @@ public class PunUtilsTest {
     @Test
     public void getDateWithOffset_current() throws Exception {
         assertEquals("With no offset we should be getting the current date",
-                new Date(), PunUtils.getDateWithOffset(0));
+                new Date().toString(), PunUtils.getDateWithOffset(0).toString());
     }
 
     @Test
     public void getDateWithOffset_4days() throws Exception {
         // We compare to second rather than milisecond because we might see differences because
         // of the time between the two timestamp calls.
-        long timestamp = System.currentTimeMillis()/1000 + 4*60*60*24;
-        long timestampToTest = (PunUtils.getDateWithOffset(4)).getTime()/1000;
+        long timestamp = System.currentTimeMillis()/MILIS_IN_SEC + 4*SEC_IN_DAY;
+        long timestampToTest = (PunUtils.getDateWithOffset(4)).getTime()/MILIS_IN_SEC;
         assertEquals("The timestamp from the date should match the timestamp with 4 days added",
                 timestamp, timestampToTest);
     }
