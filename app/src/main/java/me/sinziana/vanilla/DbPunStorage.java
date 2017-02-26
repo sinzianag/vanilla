@@ -63,10 +63,6 @@ public class DbPunStorage {
         return randomPun;
     }
 
-    public String getPunOfTheDay() {
-        return getPunForDayIndex(PunUtils.daysSinceLaunch());
-    }
-
     public String getPunForDayIndex(int dayIndex) {
         String potd = "";
         Cursor cur = _db.rawQuery("SELECT pun FROM "+ DbHelper.TABLE_NAME + " WHERE " + DbHelper.DAY_COL + "=" + dayIndex, null);

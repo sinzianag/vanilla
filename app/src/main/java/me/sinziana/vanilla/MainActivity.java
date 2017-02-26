@@ -59,8 +59,6 @@ public class MainActivity extends AppCompatActivity {
                     .add(R.id.fragment_container, firstFragment).commit();
         }
 
-        Log.e(LogConst.PERFORMANCE, "Days until March 1: " + PunUtils.daysSinceLaunch());
-
         handleBackStack();
     }
 

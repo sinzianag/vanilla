@@ -50,6 +50,7 @@ public class PunOfTheDay extends Fragment {
     private Button _newerButton;
 
     private final String DAY_OFFSET_KEY = "dayOffset";
+    private static final long launchTimestamp = 1487548800L; // March 1st, 2017
 
     @Override
     public void onStart() {
@@ -107,7 +108,7 @@ public class PunOfTheDay extends Fragment {
     }
 
     private void updateWithOlderPun() {
-        if((PunUtils.daysSinceLaunch() + _dayOffset) > 0) {
+        if((PunUtils.daysSinceLaunch(launchTimestamp) + _dayOffset) > 0) {
             _dayOffset--;
             updateUI();
         }
@@ -121,7 +122,7 @@ public class PunOfTheDay extends Fragment {
     }
 
     private void updateButtonVisibility() {
-        if ((PunUtils.daysSinceLaunch() + _dayOffset) <= 0) {
+        if ((PunUtils.daysSinceLaunch(launchTimestamp) + _dayOffset) <= 0) {
             _olderButton.setEnabled(false);
         } else {
             _olderButton.setEnabled(true);
@@ -136,7 +137,7 @@ public class PunOfTheDay extends Fragment {
 
     private void setCurrentPun() {
         DbPunStorage db = new DbPunStorage(this.getActivity());
-        _pun.setText(db.getPunForDayIndex(PunUtils.daysSinceLaunch() +_dayOffset));
+        _pun.setText(db.getPunForDayIndex(PunUtils.daysSinceLaunch(launchTimestamp) +_dayOffset));
     }
 
     private void setCurrentDate() {

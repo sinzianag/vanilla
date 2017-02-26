@@ -24,11 +24,6 @@
 
 package me.sinziana.vanilla;
 
-import android.text.format.DateUtils;
-import android.util.Log;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -39,45 +34,9 @@ import java.util.Date;
 
 public class PunUtils {
 
-    /**
-     * The date format used in the application
-     */
-    private static final String DATE_FORMAT = "mm/dd/yyyy";
-
-    private static final long launchTimestamp = 1487548800L; // March 1st, 2017
-
-    /**
-     * Check if the date we're passing is today
-     * Date format must be "mm/dd/yyyy"
-     *
-     * @param dateString - String that we will check if it's today.
-     * @return true if it's today
-     */
-    public static boolean isToday(String dateString) {
-        try {
-            SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
-            Date date = sdf.parse(dateString);
-
-            return DateUtils.isToday(date.getTime());
-        } catch (ParseException e) {
-            Log.e("ParseException", "Could not get the date from the passed String: " + dateString);
-        }
-
-        return false;
-    }
-
-    public static int daysSinceLaunch() {
+    public static int daysSinceLaunch(long launchTimestamp) {
         long diff = (Calendar.getInstance().getTimeInMillis()/1000) - launchTimestamp;
         return Math.round(((diff/60)/60)/24);
-    }
-
-    /**
-     * Get today's date in the format that we use to store the date through the application.
-     *
-     * @return string with today's date
-     */
-    public static String getTodayString() {
-        return new SimpleDateFormat(DATE_FORMAT).format(new Date());
     }
 
     public static Date getDateWithOffset(int offset) {
