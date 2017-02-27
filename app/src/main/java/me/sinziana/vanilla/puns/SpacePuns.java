@@ -36,7 +36,6 @@ import android.widget.TextView;
 
 import java.util.Iterator;
 
-import me.sinziana.vanilla.PunReader;
 import me.sinziana.vanilla.R;
 
 public class SpacePuns extends Fragment {
@@ -57,7 +56,7 @@ public class SpacePuns extends Fragment {
             ab.setTitle(R.string.space_puns);
             ab.invalidateOptionsMenu();
         }
-        _punIterator = PunReader.readPuns(FILE_NAME, getActivity()).iterator();
+       // _punIterator = PunReader.readPuns(FILE_NAME, getActivity()).iterator();
     }
 
     @Override

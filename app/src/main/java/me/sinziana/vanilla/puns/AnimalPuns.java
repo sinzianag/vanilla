@@ -36,7 +36,6 @@ import android.widget.TextView;
 
 import java.util.Iterator;
 
-import me.sinziana.vanilla.PunReader;
 import me.sinziana.vanilla.R;
 
 public class AnimalPuns extends Fragment {
@@ -59,7 +58,7 @@ public class AnimalPuns extends Fragment {
             ab.invalidateOptionsMenu();
         }
 
-        _punIterator = PunReader.readPuns(FILE_NAME, getActivity()).iterator();
+        //_punIterator = PunReader.readPuns(FILE_NAME, getActivity()).iterator();
     }
 
     @Override

@@ -73,10 +73,6 @@ public class SearchActivity extends AppCompatActivity {
         handleIntent(intent);
     }
 
-    /**
-     * Handle receiving a new intent from a search
-     * @param intent
-     */
     private void handleIntent(Intent intent) {
 
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
