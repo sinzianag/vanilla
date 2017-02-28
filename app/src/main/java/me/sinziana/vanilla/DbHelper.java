@@ -35,26 +35,24 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import me.sinziana.vanilla.screens.PunCategories;
-
 class DbHelper extends SQLiteOpenHelper {
 
     // Constants
-    private static final String DATABASE_NAME = "punDB";
-    private static final int DATABASE_VERSION = 1;
+    public static final String DAY_COL = "punOfTheDay";
     public static final String TABLE_NAME = "puns";
     public static final String FTS_TABLE_NAME = "fts_puns";
 
+    private static final String DATABASE_NAME = "punDB";
     private static final String PUN_COL = "pun";
     private static final String CATEGORY_COL = "category";
-    public static final String DAY_COL = "punOfTheDay";
     private static final String FAVORITE_COL = "favorite";
 
-    private int _dayOrder = 0;
+    private static final int DATABASE_VERSION = 1;
 
     // private variables
     private SQLiteDatabase _database;
     private final Context _context;
+    private int _dayOrder = 0;
 
     public DbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -99,8 +97,8 @@ class DbHelper extends SQLiteOpenHelper {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                for (int i = 0; i < PunCategories.PunCategory.categories.length; i++) {
-                    loadDatabase(PunCategories.PunCategory.categories[i]);
+                for (int i = 0; i < PunCategoryList.categories.length; i++) {
+                    loadDatabase(PunCategoryList.categories[i]);
                 }
                 updateFTSTable();
             }

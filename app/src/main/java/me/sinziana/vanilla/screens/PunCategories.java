@@ -62,16 +62,4 @@ public class PunCategories extends Fragment{
         return inflater.inflate(R.layout.pun_categories, container, false);
     }
 
-    public static class PunCategory {
-
-        private static final String ANIMAL = "animal";
-        private static final String BATTERY = "battery";
-        private static final String COMPUTER = "computer";
-        private static final String ELEVATOR = "elevator";
-        private static final String FOOD = "food";
-        private static final String SPACE = "space";
-
-        public static String[] categories = {ANIMAL, BATTERY, COMPUTER, ELEVATOR, FOOD, SPACE};
-    }
-
 }

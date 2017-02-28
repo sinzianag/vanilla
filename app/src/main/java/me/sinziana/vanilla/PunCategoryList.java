@@ -24,14 +24,13 @@
 
 package me.sinziana.vanilla;
 
-/**
- * Logging constants for the application.
- * Using this so there's consistency in the application.
- */
-public final class LogConst {
-    public static final String DATABASE = "Database";
-    public static final String SEARCH = "Search";
-    public static final String DISPLAY = "Display";
-    public static final String PERFORMANCE = "Performance";
+public class PunCategoryList {
+    private static final String ANIMAL = "animal";
+    private static final String BATTERY = "battery";
+    private static final String COMPUTER = "computer";
+    private static final String ELEVATOR = "elevator";
+    private static final String FOOD = "food";
+    private static final String SPACE = "space";
 
+    public static String[] categories = {ANIMAL, BATTERY, COMPUTER, ELEVATOR, FOOD, SPACE};
 }
