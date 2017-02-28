@@ -25,14 +25,26 @@
 package me.sinziana.vanilla.screens;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import me.sinziana.vanilla.PunCategoryList;
 import me.sinziana.vanilla.R;
+import me.sinziana.vanilla.SearchActivity;
 
 public class PunCategories extends Fragment{
 
@@ -59,7 +71,52 @@ public class PunCategories extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.pun_categories, container, false);
+        View view = inflater.inflate(R.layout.pun_categories, container, false);
+
+        final ArrayList<String> list = PunCategoryList.categories;
+
+        final ListView listview = (ListView) view.findViewById(R.id.listview);
+        final PunCategories.StableArrayAdapter adapter = new PunCategories.StableArrayAdapter(this.getActivity(), R.layout.pun_category, list);
+        listview.setAdapter(adapter);
+
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, final View view,
+                                    int position, long id) {
+                final String item = (String) parent.getItemAtPosition(position);
+                System.out.println("Pressed on: " + item);
+            }
+        });
+
+        return view;
+    }
+
+    /**
+     * Adapter for the List View
+     */
+    private class StableArrayAdapter extends ArrayAdapter<String> {
+
+        final HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
+
+        public StableArrayAdapter(Context context, int textViewResourceId,
+                                  List<String> objects) {
+            super(context, textViewResourceId, objects);
+            for (int i = 0; i < objects.size(); i++) {
+                mIdMap.put(objects.get(i), i);
+            }
+        }
+
+        @Override
+        public long getItemId(int position) {
+            String item = getItem(position);
+            return mIdMap.get(item);
+        }
+
+        @Override
+        public boolean hasStableIds() {
+            return true;
+        }
+
     }
 
 }

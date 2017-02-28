@@ -24,6 +24,9 @@
 
 package me.sinziana.vanilla;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class PunCategoryList {
     private static final String ANIMAL = "animal";
     private static final String BATTERY = "battery";
@@ -32,5 +35,13 @@ public class PunCategoryList {
     private static final String FOOD = "food";
     private static final String SPACE = "space";
 
-    public static String[] categories = {ANIMAL, BATTERY, COMPUTER, ELEVATOR, FOOD, SPACE};
+    public static ArrayList<String> categories = new ArrayList<String>() {{
+        add("ANIMAL");
+        add("BATTERY");
+        add("COMPUTER");
+        add("ELEVATOR");
+        add("FOOD");
+        add("SPACE");
+    }};
+
 }
