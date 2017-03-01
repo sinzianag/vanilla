@@ -97,8 +97,8 @@ class DbHelper extends SQLiteOpenHelper {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                for (int i = 0; i < PunCategoryList.categories.size(); i++) {
-                    loadDatabase(PunCategoryList.categories.get(i));
+                for (int i = 0; i < PunCategoryList.categories.length; i++) {
+                    loadDatabase(PunCategoryList.categories[i]);
                 }
                 updateFTSTable();
             }

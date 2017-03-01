@@ -26,7 +26,17 @@ package me.sinziana.vanilla.screens;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.RippleDrawable;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -34,7 +44,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -70,10 +82,8 @@ public class PunCategories extends Fragment{
 
         View view = inflater.inflate(R.layout.pun_categories, container, false);
 
-        final ArrayList<String> list = PunCategoryList.categories;
-
         final ListView listview = (ListView) view.findViewById(R.id.listview);
-        final PunCategories.StableArrayAdapter adapter = new PunCategories.StableArrayAdapter(this.getActivity(), R.layout.pun_category, list);
+        final PunCategories.StableArrayAdapter adapter = new PunCategories.StableArrayAdapter(this.getActivity(), R.layout.pun_category, PunCategoryList.categories);
         listview.setAdapter(adapter);
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -94,24 +104,39 @@ public class PunCategories extends Fragment{
     private class StableArrayAdapter extends ArrayAdapter<String> {
 
         final HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
+        private final Context context;
+        private final String[] values;
 
-        public StableArrayAdapter(Context context, int textViewResourceId,
-                                  List<String> objects) {
-            super(context, textViewResourceId, objects);
-            for (int i = 0; i < objects.size(); i++) {
-                mIdMap.put(objects.get(i), i);
-            }
+        public StableArrayAdapter(Context context, int textViewResourceId, String[] values) {
+            super(context, -1, values);
+            this.context = context;
+            this.values = values;
         }
 
-        @Override
-        public long getItemId(int position) {
-            String item = getItem(position);
-            return mIdMap.get(item);
-        }
 
         @Override
-        public boolean hasStableIds() {
-            return true;
+        public View getView(int position, View convertView, ViewGroup parent) {
+            LayoutInflater inflater = (LayoutInflater) context
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            TextView rowView = (TextView)inflater.inflate(R.layout.pun_category, parent, false);
+            rowView.setText(values[position]);
+          //  rowView.setBackgroundColor(Color.parseColor("#14A697"));
+
+            RippleDrawable newImage = new RippleDrawable(
+                    new ColorStateList(
+                            new int[][]{
+                                    new int[]{android.R.attr.state_pressed},
+                                    new int[]{}
+                            },
+                            new int[]{
+                                    getResources().getColor(R.color.ripple_material_light),
+                                    getResources().getColor(R.color.ripple_material_dark),
+                            }),
+                    new ColorDrawable(Color.parseColor("#14A697")),
+                    null);
+            rowView.setBackground(newImage);
+            // TODO - Refactor this!
+            return rowView;
         }
 
     }
