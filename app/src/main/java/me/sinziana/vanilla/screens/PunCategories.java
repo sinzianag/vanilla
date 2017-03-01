@@ -37,6 +37,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.RippleDrawable;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -129,8 +130,8 @@ public class PunCategories extends Fragment{
                                     new int[]{}
                             },
                             new int[]{
-                                    getResources().getColor(R.color.ripple_material_light),
-                                    getResources().getColor(R.color.ripple_material_dark),
+                                    ContextCompat.getColor(context, R.color.ripple_material_light),
+                                    ContextCompat.getColor(context, R.color.ripple_material_dark),
                             }),
                     new ColorDrawable(Color.parseColor("#14A697")),
                     null);
