@@ -121,8 +121,8 @@ public class PunCategories extends Fragment{
                                     new int[]{}
                             },
                             new int[]{
-                                    ContextCompat.getColor(context, R.color.ripple_material_light),
-                                    ContextCompat.getColor(context, R.color.ripple_material_dark),
+                                    ContextCompat.getColor(context, R.color.ripple_material_light), // Replace with app colors
+                                    ContextCompat.getColor(context, R.color.ripple_material_dark), // Replace with app colors
                             }),
                     new ColorDrawable(Color.parseColor("#14A697")),
                     null);
