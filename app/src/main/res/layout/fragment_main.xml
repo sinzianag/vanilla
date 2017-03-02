@@ -7,6 +7,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/pun_of_the_day"
+        android:textColor="@color/colorBackground"
+        android:textSize="16dp"
         android:id="@+id/pun_of_the_day"
         android:layout_marginTop="?attr/actionBarSize"
         android:layout_weight="0.25"
@@ -16,6 +18,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/random_pun"
+        android:textColor="@color/colorBackground"
+        android:textSize="16dp"
         android:id="@+id/random_pun"
         android:layout_weight="0.25"
         android:background="@color/color2"/>
@@ -24,6 +28,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/pun_categories"
+        android:textColor="@color/colorBackground"
+        android:textSize="16dp"
         android:id="@+id/puns_categories"
         android:layout_weight="0.25"
         android:background="@color/color3"/>
@@ -32,6 +38,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/favorites"
+        android:textColor="@color/colorBackground"
+        android:textSize="16dp"
         android:id="@+id/favorites"
         android:layout_weight="0.25"
         android:background="@color/color4"/>
