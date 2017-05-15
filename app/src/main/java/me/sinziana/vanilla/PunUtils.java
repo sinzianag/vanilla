@@ -24,6 +24,8 @@
 
 package me.sinziana.vanilla;
 
+import android.graphics.Color;
+
 import java.util.Calendar;
 import java.util.Date;
 
@@ -44,5 +46,14 @@ public class PunUtils {
 
     public static Date getDateWithOffset(int offset) {
         return new Date(Calendar.getInstance().getTimeInMillis() + offset * SECONDS_IN_DAY * MILI_IN_SEC);
+    }
+
+    public static int getGradientColor(int position) {
+        int baseColor = Color.parseColor("#79cec5");
+        float[] hsv = new float[3];
+        Color.colorToHSV(baseColor, hsv);
+        hsv[2] *= (1.0f - 0.1f * position);
+        int color = Color.HSVToColor(hsv);
+        return color;
     }
 }

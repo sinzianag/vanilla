@@ -45,6 +45,7 @@ import android.widget.TextView;
 import java.util.HashMap;
 
 import me.sinziana.vanilla.PunCategoryList;
+import me.sinziana.vanilla.PunUtils;
 import me.sinziana.vanilla.R;
 
 public class PunCategories extends Fragment{
@@ -112,7 +113,6 @@ public class PunCategories extends Fragment{
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             TextView rowView = (TextView)inflater.inflate(R.layout.pun_category, parent, false);
             rowView.setText(values[position]);
-          //  rowView.setBackgroundColor(Color.parseColor("#14A697"));
 
             RippleDrawable newImage = new RippleDrawable(
                     new ColorStateList(
@@ -124,10 +124,9 @@ public class PunCategories extends Fragment{
                                     ContextCompat.getColor(context, R.color.ripple_material_light), // Replace with app colors
                                     ContextCompat.getColor(context, R.color.ripple_material_dark), // Replace with app colors
                             }),
-                    new ColorDrawable(Color.parseColor("#14A697")),
+                    new ColorDrawable(PunUtils.getGradientColor(position)),
                     null);
             rowView.setBackground(newImage);
-            // TODO - Refactor this!
             return rowView;
         }
 
