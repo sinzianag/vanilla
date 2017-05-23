@@ -33,6 +33,11 @@ public class PunCategoryList {
     private static final String ELEVATOR = "elevator";
     private static final String FOOD = "food";
     private static final String SPACE = "space";
+    private static final String LOVE = "love";
+    private static final String CAT = "cat";
+    private static final String DOG = "dog";
+    private static final String DENTIST = "dentist";
 
-    public static String[] categories = {ANIMAL, BATTERY, COMPUTER, ELEVATOR, FOOD, SPACE};
+    public static String[] categories = {ANIMAL, BATTERY, COMPUTER, ELEVATOR, FOOD,
+            SPACE, LOVE, CAT, DOG, DENTIST};
 }
